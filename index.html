@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Around The U.S.</title>
+        <link rel="stylesheet" href="pages/index.css" />
+    </head>
+    <body class="page">
+        <div class="page__wrapper">
+            <header class="header">
+                <img src="images/Vector.svg" alt="Around the U.S. logo" class="header__logo" />
+            </header>
+            <main class="content">
+                <section class="profile">
+                    <div class="profile__info">
+                        <div class="profile__avatar">
+                            <img src="images/marthapic.jpeg" alt="" class="profile__photo" />
+                        </div>
+                        <div class="profile__text">
+                            <div class="profile__username">
+                                <h1 class="js-profile-name profile__name">Martha Ramos</h1>
+                                <button class="profile__edit-button" id="profile-edit-btn"><img src="images/pencil-vector.svg" alt="pencil icon" class="profile__pencil" /></button>
+                            </div>
+                            <p class="js-profile-bio profile__bio">Adventurer</p>
+                        </div>
+                        <button class="profile__add-button"><img src="images/add-button-vector.svg" alt="plus sign icon" class="profile__plus-sign" /></button>
+                    </div>
+                </section>
+
+                <!-- Pop-up edit box start-->
+                <div class="modal">
+                    <div class="modal__box">
+                        <button class="modal__close-btn" id="modal-close-btn"><img src="./images/close-button.svg" alt="Close window button" class="modal__close-img" /></button>
+                        <form id="modal-edit-form">
+                            <p class="modal__box-title">Edit profile</p>
+                            <input id="modal-name-input" type="text" name="Name" placeholder="Name" class="modal__input-text modal__input-text_name" />
+                            <input id="modal-bio-input" type="text" name="Bio" placeholder="About Me" class="modal__input-text modal__input-text_bio" />
+                            <input type="submit" value="Save" class="modal__save-btn" />
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Pop-up edit box end -->
+
+                <section class="photo-grid">
+                    <ul class="photo-grid__gallery">
+                        <li class="photo-grid__post">
+                            <img src="./images/yosemite-waterfall.jpg" alt="Waterfall in Yosemite National Park, CA" class="photo-grid__photo" />
+                            <div class="photo-grid__info">
+                                <p class="photo-grid__caption">Yosemite Falls</p>
+                                <img src="./images/like.svg" alt="Heart" class="photo-grid__like" />
+                            </div>
+                        </li>
+                        <li class="photo-grid__post">
+                            <img src="./images/paris.jpg" alt="The Louvre in Paris, France" class="photo-grid__photo" />
+                            <div class="photo-grid__info">
+                                <p class="photo-grid__caption">The Lourve</p>
+                                <img src="./images/like.svg" alt="Heart" class="photo-grid__like" />
+                            </div>
+                        </li>
+                        <li class="photo-grid__post">
+                            <img src="./images/rome.jpg" alt="The forum in Rome, Italy" class="photo-grid__photo" />
+                            <div class="photo-grid__info">
+                                <p class="photo-grid__caption">The Forum</p>
+                                <img src="./images/like.svg" alt="Heart" class="photo-grid__like" />
+                            </div>
+                        </li>
+                        <li class="photo-grid__post">
+                            <img src="./images/florence.jpg" alt="Street in Florence, Italy" class="photo-grid__photo" />
+                            <div class="photo-grid__info">
+                                <p class="photo-grid__caption">Florence</p>
+                                <img src="./images/like.svg" alt="Heart" class="photo-grid__like" />
+                            </div>
+                        </li>
+                        <li class="photo-grid__post">
+                            <img src="./images/mesa-verde.jpg" alt="Adobe houses in Mesa Verde National Park, CO" class="photo-grid__photo" />
+                            <div class="photo-grid__info">
+                                <p class="photo-grid__caption">Mesa Verde National Park</p>
+                                <img src="./images/like.svg" alt="Heart" class="photo-grid__like" />
+                            </div>
+                        </li>
+                        <li class="photo-grid__post">
+                            <img src="./images/mauiH.jpg" alt="Beach in Maui, HI" class="photo-grid__photo" />
+                            <div class="photo-grid__info">
+                                <p class="photo-grid__caption">Maui</p>
+                                <img src="./images/like.svg" alt="Heart" class="photo-grid__like" />
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            </main>
+            <footer class="footer">
+                <p class="footer__copyright">© 2021. Martha Ramos</p>
+            </footer>
+        </div>
+        <script src="scripts/index.js" type="text/javascript"></script>
+    </body>
+</html>

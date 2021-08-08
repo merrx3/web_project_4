@@ -1,0 +1,7 @@
+.photo-grid__post {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10%;
+    height: 361px;
+}

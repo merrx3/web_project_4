@@ -1,0 +1,15 @@
+.modal__input-text {
+    width: 358px;
+    height: 27.26px;
+    opacity: 0.2;
+    border: none;
+    border-bottom: 1px solid #000;
+    margin: 0 36px 29px 36px;
+}
+
+@media screen and (max-width: 600px) {
+    .modal__input-text {
+        width: 238px;
+        height: 26px;
+    }
+}
