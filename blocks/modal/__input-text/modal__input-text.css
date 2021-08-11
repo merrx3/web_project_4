@@ -1,10 +1,19 @@
 .modal__input-text {
     width: 358px;
     height: 27.26px;
-    opacity: 0.2;
+    font-family: "Inter", Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000;
     border: none;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.2);
     margin: 0 36px 29px 36px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
 }
 
 @media screen and (max-width: 600px) {

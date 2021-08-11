@@ -6,7 +6,6 @@
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
-@import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__bio/profile__bio.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__plus-sign/profile__plus-sign.css);
@@ -16,16 +15,15 @@
 @import url(../blocks/profile/__photo/profile__photo.css);
 @import url(../blocks/profile/__text/profile__text.css);
 @import url(../blocks/profile/__username/profile__username.css);
+@import url(../blocks/photo-grid/__like-btn/photo-grid__like-btn.css);
 @import url(../blocks/modal/modal.css);
 @import url(../blocks/modal/__box/modal__box.css);
 @import url(../blocks/modal/__box-title/modal__box-title.css);
 @import url(../blocks/modal/__input-text/modal__input-text.css);
-@import url(../blocks/modal/__input-text/__input-text_name/modal__input-text_name.css);
-@import url(../blocks/modal/__input-text/__input-text_bio/modal__input-text_bio.css);
 @import url(../blocks/modal/__save-btn/modal__save-btn.css);
 @import url(../blocks/modal/__close-btn/modal__close-btn.css);
 @import url(../blocks/modal/__close-img/modal__close-img.css);
-@import url(../blocks/modal/modal--open.css);
+@import url(../blocks/modal/__open/modal__open.css);
 @import url(../blocks/photo-grid/photo-grid.css);
 @import url(../blocks/photo-grid/__gallery/photo-grid__gallery.css);
 @import url(../blocks/photo-grid/__post/photo-grid__post.css);

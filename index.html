@@ -15,28 +15,26 @@
             <main class="content">
                 <section class="profile">
                     <div class="profile__info">
-                        <div class="profile__avatar">
-                            <img src="images/avatar-image.svg" alt="profile photo" class="profile__photo" />
-                        </div>
+                            <img src="images/Avatar.jpg" alt="profile photo" class="profile__photo" /> 
                         <div class="profile__text">
                             <div class="profile__username">
-                                <h1 class="js-profile-name profile__name">Jacques Cousteau</h1>
-                                <button class="profile__edit-button" id="profile-edit-btn"><img src="images/pencil-vector.svg" alt="pencil icon" class="profile__pencil" /></button>
+                                <h1 class="profile__name js-profile-name">Jacques Cousteau</h1>
+                                <button class="profile__edit-button" id="profile-edit-btn" type="button"><img src="images/pencil-vector.svg" alt="pencil icon" class="profile__pencil" /></button>
                             </div>
-                            <p class="js-profile-bio profile__bio">Adventurer</p>
+                            <p class="profile__bio js-profile-bio">Adventurer</p>
                         </div>
-                        <button class="profile__add-button"><img src="images/add-button-vector.svg" alt="plus sign icon" class="profile__plus-sign" /></button>
+                        <button class="profile__add-button" type="button"><img src="images/add-button-vector.svg" alt="plus sign icon" class="profile__plus-sign" /></button>
                     </div>
                 </section>
 
                 <!-- Pop-up edit box start-->
                 <div class="modal">
                     <div class="modal__box">
-                        <button class="modal__close-btn" id="modal-close-btn"><img src="./images/close-button.svg" alt="Close window button" class="modal__close-img" /></button>
+                        <button class="modal__close-btn" id="modal-close-btn" type="button"><img src="./images/close-button.svg" alt="Close window button" class="modal__close-img" /></button>
                         <form id="modal-edit-form">
-                            <p class="modal__box-title">Edit profile</p>
-                            <input id="modal-name-input" type="text" name="Name" placeholder="Name" class="modal__input-text modal__input-text_name" />
-                            <input id="modal-bio-input" type="text" name="Bio" placeholder="About Me" class="modal__input-text modal__input-text_bio" />
+                            <h2 class="modal__box-title">Edit profile</h2>
+                            <input id="modal-name-input" type="text" name="Name" placeholder="Name" class="modal__input-text" />
+                            <input id="modal-bio-input" type="text" name="Bio" placeholder="About Me" class="modal__input-text" />
                             <input type="submit" value="Save" class="modal__save-btn" />
                         </form>
                     </div>
@@ -49,43 +47,43 @@
                         <li class="photo-grid__post">
                             <img src="./images/yosemite.jpg" alt="River in Yosemite National Park" class="photo-grid__photo" />
                             <div class="photo-grid__info">
-                                <p class="photo-grid__caption">Yosemite Valley</p>
-                                <img src="./images/like.svg" alt="Heart" class="photo-grid__like" />
+                                <h2 class="photo-grid__caption">Yosemite Valley</h2>
+                                <button class="photo-grid__like-btn" type="button"><img src="./images/like.svg" alt="Heart" class="photo-grid__like" /></button>
                             </div>
                         </li>
                         <li class="photo-grid__post">
                             <img src="./images/louise.png" alt="Lake Louise" class="photo-grid__photo" />
                             <div class="photo-grid__info">
-                                <p class="photo-grid__caption">Lake Louise</p>
-                                <img src="./images/like.svg" alt="Heart" class="photo-grid__like" />
+                                <h2 class="photo-grid__caption">Lake Louise</h2>
+                                <button class="photo-grid__like-btn" type="button"><img src="./images/like.svg" alt="Heart" class="photo-grid__like" /></button>
                             </div>
                         </li>
                         <li class="photo-grid__post">
                             <img src="./images/bald-mountains.png" alt="Sunrise in Bald Mountains" class="photo-grid__photo" />
                             <div class="photo-grid__info">
-                                <p class="photo-grid__caption">Bald Mountains</p>
-                                <img src="./images/like.svg" alt="Heart" class="photo-grid__like" />
+                                <h2 class="photo-grid__caption">Bald Mountains</h2>
+                                <button class="photo-grid__like-btn" type="button"><img src="./images/like.svg" alt="Heart" class="photo-grid__like" /></button>
                             </div>
                         </li>
                         <li class="photo-grid__post">
                             <img src="./images/latemar.png" alt="Night sky in Latemar" class="photo-grid__photo" />
                             <div class="photo-grid__info">
-                                <p class="photo-grid__caption">Latemar</p>
-                                <img src="./images/like.svg" alt="Heart" class="photo-grid__like" />
+                                <h2 class="photo-grid__caption">Latemar</h2>
+                                <button class="photo-grid__like-btn" type="button"><img src="./images/like.svg" alt="Heart" class="photo-grid__like" /></button>
                             </div>
                         </li>
                         <li class="photo-grid__post">
                             <img src="./images/vanoise.png" alt="Lake in Vanoise National Park" class="photo-grid__photo" />
                             <div class="photo-grid__info">
-                                <p class="photo-grid__caption">Vanoise National Park</p>
-                                <img src="./images/like.svg" alt="Heart" class="photo-grid__like" />
+                                <h2 class="photo-grid__caption">Vanoise National Park</h2>
+                                <button class="photo-grid__like-btn" type="button"><img src="./images/like.svg" alt="Heart" class="photo-grid__like" /></button>
                             </div>
                         </li>
                         <li class="photo-grid__post">
                             <img src="./images/lago.png" alt="Row boats on Lago di Braies" class="photo-grid__photo" />
                             <div class="photo-grid__info">
-                                <p class="photo-grid__caption">Lago di Braies</p>
-                                <img src="./images/like.svg" alt="Heart" class="photo-grid__like" />
+                                <h2 class="photo-grid__caption">Lago di Braies</h2>
+                                <button class="photo-grid__like-btn" type="button"><img src="./images/like.svg" alt="Heart" class="photo-grid__like" /></button>
                             </div>
                         </li>
                     </ul>
