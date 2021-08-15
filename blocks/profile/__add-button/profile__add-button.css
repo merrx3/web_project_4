@@ -7,6 +7,9 @@
     border-radius: 2px;
     cursor: pointer;
     margin: 35px 0 35px 165px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media screen and (max-width: 600px) {

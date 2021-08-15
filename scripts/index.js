@@ -1,30 +1,35 @@
+// Wrappers
 const modalElement = document.querySelector('.modal');
+const modalFormElement = document.querySelector('#modal-edit-form');
+
+// Buttons
 const profileLikeBtn = document.querySelector('.photo-grid__like');
 const profileHeart = document.querySelector('#black-heart');
 const modalEditBtn = document.querySelector('#profile-edit-btn');
 const modalCloseBtn = document.querySelector('#modal-close-btn');
-const modalFormElement = document.querySelector('#modal-edit-form');
+
+//Form data
 const modalNameInput = document.querySelector('#modal-name-input');
 const modalBioInput = document.querySelector('#modal-bio-input');
-const profileName = document.querySelector('.js-profile-name');
-const profileBio = document.querySelector('.js-profile-bio');
+const profileName = document.querySelector('.profile__name');
+const profileBio = document.querySelector('.profile__bio');
 
+function toggleModalWindow() {
+    modalElement.classList.toggle('modal_open');
 
-function closePopup() { 
-    modalElement.classList.remove('modal__open');
+    if (modalElement.classList.contains('modal_open')) {
+        modalNameInput.value = profileName.textContent;
+        modalBioInput.value = profileBio.textContent;
+    }
 }
 
-function openPopup() {
-    modalElement.classList.add('modal__open');
-}
-
-modalEditBtn.addEventListener("click", openPopup);
-
-modalCloseBtn.addEventListener("click", closePopup);
-
-modalFormElement.addEventListener("submit", (e) => {
+function formSubmit(e) {
     e.preventDefault();
     profileName.textContent = modalNameInput.value;
     profileBio.textContent = modalBioInput.value;
-    closePopup();
-});
+    toggleModalWindow();
+}
+
+modalEditBtn.addEventListener("click", toggleModalWindow);
+modalCloseBtn.addEventListener("click", toggleModalWindow);
+modalFormElement.addEventListener("submit", formSubmit);
