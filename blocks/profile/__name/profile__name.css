@@ -7,6 +7,12 @@
     color: #FFF;
     margin: 0;
     padding: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 373px;
+    display: flex;
+    align-items: center;
 }
 
 @media screen and (max-width: 600px) {
