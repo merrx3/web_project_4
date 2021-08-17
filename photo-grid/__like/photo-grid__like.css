@@ -1,9 +1,0 @@
-.photo-grid__like {
-    cursor: pointer;
-    margin: 0;
-    padding: 0;
-}
-
-.photo-grid__like:hover {
-    opacity: 0.5;
-}
