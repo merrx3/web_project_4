@@ -1,0 +1,24 @@
+.modal__close-btn {
+    width: 57px;
+    height: 57px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    position: absolute;
+    top: -45px;
+    right: -45px;
+}
+
+.modal__close-btn:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 600px) {
+    .modal__close-btn {
+        width: 35px;
+        height: 35px;
+        top: -40px;
+        right: -5px;
+    }
+}
