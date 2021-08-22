@@ -1,14 +1,11 @@
-// Wrappers
 const modalElement = document.querySelector('.modal');
 const modalFormElement = document.querySelector('#modal-edit-form');
 
-// Buttons
 const profileLikeBtn = document.querySelector('.photo-grid__like');
 const profileHeart = document.querySelector('#black-heart');
 const modalEditBtn = document.querySelector('#profile-edit-btn');
 const modalCloseBtn = document.querySelector('#modal-close-btn');
 
-//Form data
 const modalNameInput = document.querySelector('#modal-name-input');
 const modalBioInput = document.querySelector('#modal-bio-input');
 const profileName = document.querySelector('.profile__name');

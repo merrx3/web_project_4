@@ -12,7 +12,13 @@
     justify-content: center;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 850px) {
+    .profile__add-button{
+        margin: 35px 0 35px 10px;
+    }
+}
+
+@media screen and (max-width: 700px) {
     .profile__add-button{
         width: 282px;
         margin: 0;
