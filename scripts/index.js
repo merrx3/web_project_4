@@ -36,7 +36,7 @@ const modalFormElement = document.querySelector('#modal-edit-form');
 const placesList = document.querySelector('.photo-grid__gallery');
 const previewImageElement = document.querySelector('.modal__preview-image');
 const previewImageCaption = document.querySelector('.modal__preview-caption');
-const likeBtn = document.querySelector('.photo-grid__like-btn');
+
 
 // =====
 // Buttons
@@ -78,10 +78,6 @@ function formSubmit(e) {
     toggleModalWindow();
 }
 
-function activeLikeBtn(e) {
-    evt.target.classList.toggle('photo-grid__like-btn_active');
-}
-
 function deleteCard(evt) {
     evt.target.closest('.photo-grid__post').remove();
 }
@@ -93,7 +89,15 @@ function generateCard(card) {
 
     const imageEl = cardElement.querySelector('.photo-grid__photo');
     imageEl.style.backgroundImage = `url(${card.link})`;
-    
+
+
+    function activeLikeBtn(cardElement) {
+    cardElement.classList.toggle('photo-grid__like-btn_active');
+    }
+    const likeBtn = cardElement.querySelector('.photo-grid__like-btn');
+    const photoLikeBtn = cardElement.querySelector('#js-like-btn');
+    photoLikeBtn.addEventListener("click", () => activeLikeBtn(likeBtn));
+  
 
     const deleteCardBtn = cardElement.querySelector('.photo-grid__trash-btn');
     deleteCardBtn.addEventListener("click", deleteCard);
@@ -120,7 +124,7 @@ modalFormElement.addEventListener("submit", formSubmit);
 addModalButton.addEventListener("click", () => toggleModalWindow(addModalWindow));
 addModalCloseBtn.addEventListener("click", () => toggleModalWindow(addModalWindow));
 previewImageCloseBtn.addEventListener("click", () => toggleModalWindow(previewImageModalWindow));
-likeBtn.addEventListener("click", activeLikeBtn);
+
 
 initialCards.forEach(function(card) {
     const newCard = generateCard(card);

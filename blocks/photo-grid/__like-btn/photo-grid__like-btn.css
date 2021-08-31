@@ -1,9 +1,14 @@
 .photo-grid__like-btn {
     width: 21px;
     height: 19px;
+    background-image: url(../../../images/like.svg);
     background-color: transparent;
     margin: 30px 18px 0 0;
     padding: 0;
     border: none;
     cursor: pointer;
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
+    transition-delay: 0s;
 }

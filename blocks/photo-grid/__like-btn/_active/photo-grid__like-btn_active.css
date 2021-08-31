@@ -1,6 +1,10 @@
 .photo-grid__like-btn_active {
     cursor: pointer;
-    margin: 0;
-    padding: 0;
-    background-image: url(/images/blackheart.svg);
+    background-image: url(../../../../images/blackheart.svg);
+    background-repeat: no-repeat;
+    border: none;
+    background-color: transparent;
+    pointer-events: all;
+    opacity: 1;
+    transition-delay: 0s;
 }
