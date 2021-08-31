@@ -1,0 +1,10 @@
+.photo-grid__trash-btn {
+    width: 18px;
+    height: 19.3px;
+    background-color: transparent;
+    padding: none;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+    margin: 18px 15px 0 249px;
+}

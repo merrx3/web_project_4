@@ -1,23 +1,74 @@
-const modalElement = document.querySelector('.modal');
-const modalFormElement = document.querySelector('#modal-edit-form');
+const initialCards = [
+    {
+      name: "Yosemite Valley",
+      link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+    },
+    {
+      name: "Lake Louise",
+      link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+    },
+    {
+      name: "Bald Mountains",
+      link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+    },
+    {
+      name: "Latemar",
+      link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+    },
+    {
+      name: "Vanoise National Park",
+      link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
+    },
+    {
+      name: "Lago di Braies",
+      link: "https://code.s3.yandex.net/web-code/lago.jpg"
+    }
+  ]; 
 
+
+// =====
+// Wrappers
+// =====
+const editModalWindow = document.querySelector('.js-edit-modal');
+const addModalWindow = document.querySelector('.js-add-modal');
+const previewImageModalWindow = document.querySelector('.js-preview-modal');
+const modalFormElement = document.querySelector('#modal-edit-form');
+const placesList = document.querySelector('.photo-grid__gallery');
+const previewImageElement = document.querySelector('.modal__preview-image');
+const previewImageCaption = document.querySelector('.modal__preview-caption');
+const likeBtn = document.querySelector('.photo-grid__like-btn');
+
+// =====
+// Buttons
+// =====
 const profileLikeBtn = document.querySelector('.photo-grid__like');
 const profileHeart = document.querySelector('#black-heart');
 const modalEditBtn = document.querySelector('#profile-edit-btn');
-const modalCloseBtn = document.querySelector('#modal-close-btn');
+const editModalCloseBtn = editModalWindow.querySelector('#modal-close-btn');
+const addModalButton = document.querySelector('.profile__add-button');
+const addModalCloseBtn = addModalWindow.querySelector('#modal-close-btn');
+const previewImageCloseBtn = previewImageModalWindow.querySelector('#modal-close-btn');
 
+
+// =====
+// Inputs
+// =====
 const modalNameInput = document.querySelector('#modal-name-input');
 const modalBioInput = document.querySelector('#modal-bio-input');
 const profileName = document.querySelector('.profile__name');
 const profileBio = document.querySelector('.profile__bio');
 
-function toggleModalWindow() {
-    modalElement.classList.toggle('modal_open');
+// =====
+// Templates
+// =====
+const cardTemplate = document.querySelector('#card-template').content.querySelector('.photo-grid__post');
 
-    if (modalElement.classList.contains('modal_open')) {
-        modalNameInput.value = profileName.textContent;
-        modalBioInput.value = profileBio.textContent;
-    }
+
+// =====
+// Handlers
+// =====
+function toggleModalWindow(modal) {
+    modal.classList.toggle('modal_open');
 }
 
 function formSubmit(e) {
@@ -27,6 +78,51 @@ function formSubmit(e) {
     toggleModalWindow();
 }
 
-modalEditBtn.addEventListener("click", toggleModalWindow);
-modalCloseBtn.addEventListener("click", toggleModalWindow);
+function activeLikeBtn(e) {
+    evt.target.classList.toggle('photo-grid__like-btn_active');
+}
+
+function deleteCard(evt) {
+    evt.target.closest('.photo-grid__post').remove();
+}
+
+function generateCard(card) {
+    const cardElement = cardTemplate.cloneNode(true);
+
+    cardElement.querySelector('.photo-grid__caption').textContent = card.name;
+
+    const imageEl = cardElement.querySelector('.photo-grid__photo');
+    imageEl.style.backgroundImage = `url(${card.link})`;
+    
+
+    const deleteCardBtn = cardElement.querySelector('.photo-grid__trash-btn');
+    deleteCardBtn.addEventListener("click", deleteCard);
+
+    imageEl.addEventListener("click", function() {
+        previewImageElement.src = card.link;
+        previewImageCaption.textContent = card.name
+        toggleModalWindow(previewImageModalWindow);
+    });
+    return cardElement;
+}
+
+function renderCard(card, container) {
+    //append it to list
+    container.append(card);
+}
+
+// =====
+// Event Listeners
+// =====
+modalEditBtn.addEventListener("click", () => toggleModalWindow(editModalWindow));
+editModalCloseBtn.addEventListener("click", () => toggleModalWindow(editModalWindow));
 modalFormElement.addEventListener("submit", formSubmit);
+addModalButton.addEventListener("click", () => toggleModalWindow(addModalWindow));
+addModalCloseBtn.addEventListener("click", () => toggleModalWindow(addModalWindow));
+previewImageCloseBtn.addEventListener("click", () => toggleModalWindow(previewImageModalWindow));
+likeBtn.addEventListener("click", activeLikeBtn);
+
+initialCards.forEach(function(card) {
+    const newCard = generateCard(card);
+    renderCard(newCard, placesList);
+});
