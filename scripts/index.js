@@ -58,6 +58,7 @@ const modalBioInput = document.querySelector('#modal-bio-input');
 const profileName = document.querySelector('.profile__name');
 const profileBio = document.querySelector('.profile__bio');
 
+
 // =====
 // Templates
 // =====
@@ -71,36 +72,45 @@ function toggleModalWindow(modal) {
     modal.classList.toggle('modal_open');
 }
 
-function formSubmit(e) {
+function editFormSubmit(e) {
     e.preventDefault();
     profileName.textContent = modalNameInput.value;
     profileBio.textContent = modalBioInput.value;
     toggleModalWindow();
 }
 
-function deleteCard(evt) {
-    evt.target.closest('.photo-grid__post').remove();
-}
 
 function generateCard(card) {
     const cardElement = cardTemplate.cloneNode(true);
 
-    cardElement.querySelector('.photo-grid__caption').textContent = card.name;
+    const postTitle = cardElement.querySelector('#title');
+    const postImage = cardElement.querySelector('#link');
+    function addFormSubmit(e) {
+        e.preventDefault();
+        const newPost = {
+            "name": postTitle.value,
+            "link": postImage.value,
+        }
+        const newPostEl = generateCard(newPost);
+        renderCard(newPostEl);
+    }
 
-    const imageEl = cardElement.querySelector('.photo-grid__photo');
-    imageEl.style.backgroundImage = `url(${card.link})`;
-
+    function deleteCard(e) {
+        e.target.closest('.photo-grid__post').remove();
+    }
+    const deleteCardBtn = cardElement.querySelector('.photo-grid__trash-btn');
+    deleteCardBtn.addEventListener("click", deleteCard);
 
     function activeLikeBtn(cardElement) {
-    cardElement.classList.toggle('photo-grid__like-btn_active');
-    }
+        cardElement.classList.toggle('photo-grid__like-btn_active');
+        }
     const likeBtn = cardElement.querySelector('.photo-grid__like-btn');
     const photoLikeBtn = cardElement.querySelector('#js-like-btn');
     photoLikeBtn.addEventListener("click", () => activeLikeBtn(likeBtn));
-  
-
-    const deleteCardBtn = cardElement.querySelector('.photo-grid__trash-btn');
-    deleteCardBtn.addEventListener("click", deleteCard);
+    
+    cardElement.querySelector('.photo-grid__caption').textContent = card.name;
+    const imageEl = cardElement.querySelector('.photo-grid__photo');
+    imageEl.style.backgroundImage = `url(${card.link})`;
 
     imageEl.addEventListener("click", function() {
         previewImageElement.src = card.link;
@@ -120,7 +130,7 @@ function renderCard(card, container) {
 // =====
 modalEditBtn.addEventListener("click", () => toggleModalWindow(editModalWindow));
 editModalCloseBtn.addEventListener("click", () => toggleModalWindow(editModalWindow));
-modalFormElement.addEventListener("submit", formSubmit);
+modalFormElement.addEventListener("submit", editFormSubmit);
 addModalButton.addEventListener("click", () => toggleModalWindow(addModalWindow));
 addModalCloseBtn.addEventListener("click", () => toggleModalWindow(addModalWindow));
 previewImageCloseBtn.addEventListener("click", () => toggleModalWindow(previewImageModalWindow));

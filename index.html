@@ -67,12 +67,11 @@
         </div>
         <template id="card-template">
             <li class="photo-grid__post">
-                <div class="photo-grid__photo">
-                    <button class="photo-grid__trash-btn" type="button"><img src="./images/Trashcan.svg" alt="Trashcan icon" class="photo-grid__trash" /></button>
-                </div>
+                <div class="photo-grid__photo" id="link"></div>
+                <button class="photo-grid__trash-btn" type="button"><img src="./images/Trashcan.svg" alt="Trashcan icon" class="photo-grid__trash" /></button>
                 <div class="photo-grid__info">
-                    <h2 class="photo-grid__caption"></h2>
-                        <button class="photo-grid__like-btn" type="button" id="js-like-btn"></button>
+                    <h2 class="photo-grid__caption" id="caption"></h2>
+                    <button class="photo-grid__like-btn" type="button" id="js-like-btn"></button>
                 </div>
             </li>
         </template>
