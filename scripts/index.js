@@ -30,12 +30,14 @@ const initialCards = [
 // Wrappers
 // =====
 const editModalWindow = document.querySelector('.js-edit-modal');
-const addModalWindow = document.querySelector('.js-add-modal');
 const previewImageModalWindow = document.querySelector('.js-preview-modal');
-const modalFormElement = document.querySelector('#modal-edit-form');
+const modalEditFormElement = document.querySelector('#modal-edit-form');
 const placesList = document.querySelector('.photo-grid__gallery');
 const previewImageElement = document.querySelector('.modal__preview-image');
 const previewImageCaption = document.querySelector('.modal__preview-caption');
+const modalAddFormElement = document.querySelector('#modal-add-form');
+const addModalWindow = document.querySelector('.js-add-modal');
+
 
 
 // =====
@@ -50,6 +52,7 @@ const addModalCloseBtn = addModalWindow.querySelector('#modal-close-btn');
 const previewImageCloseBtn = previewImageModalWindow.querySelector('#modal-close-btn');
 
 
+
 // =====
 // Inputs
 // =====
@@ -57,6 +60,9 @@ const modalNameInput = document.querySelector('#modal-name-input');
 const modalBioInput = document.querySelector('#modal-bio-input');
 const profileName = document.querySelector('.profile__name');
 const profileBio = document.querySelector('.profile__bio');
+const postTitle = document.querySelector('.modal__input-text_title');
+const postLink = document.querySelector('.modal__input-text_link'); 
+
 
 
 // =====
@@ -79,21 +85,8 @@ function editFormSubmit(e) {
     toggleModalWindow();
 }
 
-
 function generateCard(card) {
     const cardElement = cardTemplate.cloneNode(true);
-
-    const postTitle = cardElement.querySelector('#title');
-    const postImage = cardElement.querySelector('#link');
-    function addFormSubmit(e) {
-        e.preventDefault();
-        const newPost = {
-            "name": postTitle.value,
-            "link": postImage.value,
-        }
-        const newPostEl = generateCard(newPost);
-        renderCard(newPostEl);
-    }
 
     function deleteCard(e) {
         e.target.closest('.photo-grid__post').remove();
@@ -117,6 +110,15 @@ function generateCard(card) {
         previewImageCaption.textContent = card.name
         toggleModalWindow(previewImageModalWindow);
     });
+
+    function addFormSubmit(evt) {
+        evt.preventDefault();
+        postTitle.value = card.name;
+        postLink.value= card.link;
+        toggleModalWindow(addModalWindow);
+    }
+    modalAddFormElement.addEventListener("submit", addFormSubmit);
+
     return cardElement;
 }
 
@@ -125,15 +127,18 @@ function renderCard(card, container) {
     container.append(card);
 }
 
+
+
 // =====
 // Event Listeners
 // =====
 modalEditBtn.addEventListener("click", () => toggleModalWindow(editModalWindow));
 editModalCloseBtn.addEventListener("click", () => toggleModalWindow(editModalWindow));
-modalFormElement.addEventListener("submit", editFormSubmit);
+modalEditFormElement.addEventListener("submit", editFormSubmit);
 addModalButton.addEventListener("click", () => toggleModalWindow(addModalWindow));
 addModalCloseBtn.addEventListener("click", () => toggleModalWindow(addModalWindow));
 previewImageCloseBtn.addEventListener("click", () => toggleModalWindow(previewImageModalWindow));
+
 
 
 initialCards.forEach(function(card) {
