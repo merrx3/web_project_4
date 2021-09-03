@@ -3,3 +3,10 @@
     max-height: 75vw;
     object-fit: cover;
 }
+
+@media screen and (max-width: 600px) {
+    .modal__preview-image {
+        max-width: 240px;
+        max-height: 299px;
+    }
+}
