@@ -83,9 +83,17 @@ function toggleModalWindow(modal) {
 
 function editFormSubmit(e) {
     e.preventDefault();
+
     profileName.textContent = modalNameInput.value;
     profileBio.textContent = modalBioInput.value;
     toggleModalWindow();
+}
+
+function openEditModal() {
+    modalNameInput.value = profileName.textContent;
+    modalBioInput.value = profileBio.textContent;
+    toggleModalWindow();
+
 }
 
 function generateCard(card) {
@@ -134,7 +142,6 @@ function addFormSubmit(evt) {
     }
     const newPostElement = generateCard(newPost);
     addRenderCard(newPostElement, placesList);
-    toggleModalWindow();
 }
 modalAddForm.addEventListener("submit", addFormSubmit);
 
@@ -143,6 +150,7 @@ modalAddForm.addEventListener("submit", addFormSubmit);
 // Event Listeners
 // =====
 modalEditBtn.addEventListener("click", () => toggleModalWindow(editModalWindow));
+modalEditBtn.addEventListener('click', () => openEditModal(editFormSubmit));
 editModalCloseBtn.addEventListener("click", () => toggleModalWindow(editModalWindow));
 modalEditFormElement.addEventListener("submit", editFormSubmit);
 addModalButton.addEventListener("click", () => toggleModalWindow(addModalWindow));
