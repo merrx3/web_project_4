@@ -86,14 +86,11 @@ function editFormSubmit(e) {
 
     profileName.textContent = modalNameInput.value;
     profileBio.textContent = modalBioInput.value;
-    toggleModalWindow();
 }
 
 function openEditModal() {
     modalNameInput.value = profileName.textContent;
     modalBioInput.value = profileBio.textContent;
-    toggleModalWindow();
-
 }
 
 function generateCard(card) {
