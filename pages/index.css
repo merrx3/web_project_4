@@ -18,6 +18,12 @@
 @import url(../blocks/photo-grid/__like-btn/photo-grid__like-btn.css);
 @import url(../blocks/photo-grid/__like-btn/_active/photo-grid__like-btn_active.css);
 @import url(../blocks/modal/modal.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__error-message/popup__error-message.css);
+@import url(../blocks/popup/__error_visible/popup__error_visible.css);
+@import url(../blocks/popup/__button/popup__button.css);
+@import url(../blocks/popup/__button/_disabled/popup__button_disabled.css);
 @import url(../blocks/modal/__box/modal__box.css);
 @import url(../blocks/modal/__box/_type/modal__box_type_preview.css);
 @import url(../blocks/modal/__box-title/modal__box-title.css);

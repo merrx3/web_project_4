@@ -59,8 +59,8 @@ const createModalBtn = document.querySelector('.modal__create-btn');
 // =====
 // Inputs
 // =====
-const modalNameInput = document.querySelector('#modal-name-input');
-const modalBioInput = document.querySelector('#modal-bio-input');
+const modalNameInput = document.querySelector('.modal-name-input');
+const modalBioInput = document.querySelector('.modal-bio-input');
 const profileName = document.querySelector('.profile__name');
 const profileBio = document.querySelector('.profile__bio');
 const postTitle = document.querySelector('.modal__input-text_title');
@@ -77,9 +77,31 @@ const cardTemplate = document.querySelector('#card-template').content.querySelec
 // =====
 // Handlers
 // =====
-function toggleModalWindow(modal) {
+/*function toggleModalWindow(modal) {
     modal.classList.toggle('modal_open');
-}
+}*/
+
+function closeModalOnClick(evt) {
+    evt.target.classList.remove("modal_open");
+  }
+  
+  function closeModalOnEscape(evt) {
+    if (evt.key === "Escape") {
+      return closeModal(document.querySelector(".modal_open"));
+    }
+  }
+  
+  function openModal(modal) {
+    document.addEventListener("click", closeModalOnClick);
+    document.addEventListener("keydown", closeModalOnEscape);
+    return modal.classList.add("modal_open");
+  }
+
+  function closeModal(modal) {
+    document.removeEventListener("click", closeModalOnClick);
+    document.removeEventListener("keydown", closeModalOnEscape);
+    return modal.classList.remove("modal_open");
+  }
 
 function editFormSubmit(e) {
     e.preventDefault();
@@ -116,7 +138,7 @@ function generateCard(card) {
     imageEl.addEventListener("click", function() {
         previewImageElement.src = card.link;
         previewImageCaption.textContent = card.name
-        toggleModalWindow(previewImageModalWindow);
+        openModal(previewImageModalWindow);
     });
     return cardElement;
 }
@@ -146,15 +168,15 @@ modalAddForm.addEventListener("submit", addFormSubmit);
 // =====
 // Event Listeners
 // =====
-modalEditBtn.addEventListener("click", () => toggleModalWindow(editModalWindow));
+modalEditBtn.addEventListener("click", () => openModal(editModalWindow));
 modalEditBtn.addEventListener('click', () => openEditModal(editFormSubmit));
-editModalCloseBtn.addEventListener("click", () => toggleModalWindow(editModalWindow));
+editModalCloseBtn.addEventListener("click", () => closeModal(editModalWindow));
 modalEditFormElement.addEventListener("submit", editFormSubmit);
-addModalButton.addEventListener("click", () => toggleModalWindow(addModalWindow));
-addModalCloseBtn.addEventListener("click", () => toggleModalWindow(addModalWindow));
-previewImageCloseBtn.addEventListener("click", () => toggleModalWindow(previewImageModalWindow));
-saveModalBtn.addEventListener("click", () => toggleModalWindow(editModalWindow));
-createModalBtn.addEventListener("click", () => toggleModalWindow(addModalWindow));
+addModalButton.addEventListener("click", () => openModal(addModalWindow));
+addModalCloseBtn.addEventListener("click", () => closeModal(addModalWindow));
+previewImageCloseBtn.addEventListener("click", () => closeModal(previewImageModalWindow));
+saveModalBtn.addEventListener("click", () => closeModal(editModalWindow));
+createModalBtn.addEventListener("click", () => closeModal(addModalWindow));
 
 
 
@@ -163,4 +185,3 @@ initialCards.forEach(function(card) {
     const newCard = generateCard(card);
     renderCard(newCard, placesList);
 });
-
