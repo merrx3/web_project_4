@@ -47,7 +47,7 @@ const modalOpen = document.querySelector(".modal_open");
 // =====
 // Buttons
 // =====
-const profileLikeBtn = document.querySelector(".photo-grid__like");
+const profileLikeBtn = document.querySelector(".photo-grid__like-btn");
 const profileHeart = document.querySelector("#black-heart");
 const modalEditBtn = document.querySelector("#profile-edit-btn");
 const editModalCloseBtn = editModalWindow.querySelector("#modal-close-btn");
@@ -88,6 +88,7 @@ function closeModal(modal) {
     document.removeEventListener("click", closeModalOnClick);
     document.removeEventListener("keydown", closeModalOnEscape);
 }
+
 
 function closeModalOnClick(evt) {
     if (evt.target.classList.contains("modal_open")) {
@@ -159,6 +160,7 @@ const submitAddForm = (evt) => {
     };
     const newPostElement = generateCard(newPost);
     addRenderCard(newPostElement, placesList);
+    evt.target.reset();
 };
 modalAddForm.addEventListener("submit", submitAddForm);
 

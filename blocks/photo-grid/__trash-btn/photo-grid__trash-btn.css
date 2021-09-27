@@ -8,3 +8,6 @@
     border: none;
     margin: 18px 15px 0 249px;
 }
+.photo-grid__trash-btn:hover {
+    opacity: 0.5;
+}
