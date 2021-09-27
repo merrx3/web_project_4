@@ -1,4 +1,4 @@
-const showInputError = (input, formElement, {errorClass}) => {
+const showInputError = (input, formElement, { errorClass }) => {
     const errorSpan = formElement.querySelector("#" + input.id + "-error");
     //add error class/messge
     errorSpan.textContent = input.validationMessage;
@@ -13,7 +13,7 @@ const hideInputError = (input, formElement, { errorClass }) => {
 };
 
 const checkInputValidity = (formElement, input, settings) => {
-    if(input.validity.valid) {
+    if (input.validity.valid) {
         hideInputError(input, formElement, settings);
     } else {
         showInputError(input, formElement, settings);
@@ -21,11 +21,11 @@ const checkInputValidity = (formElement, input, settings) => {
 };
 
 const hasValidInputs = (inputList) => {
-   return inputList.every(input => input.validity.valid === true);
+    return inputList.every((input) => input.validity.valid === true);
 };
 
 const toggleButtonState = (inputList, submitButton, settings) => {
-    if(hasValidInputs(inputList)) {
+    if (hasValidInputs(inputList)) {
         submitButton.disabled = false;
         submitButton.classList.remove(settings.inactiveButtonClass);
     } else {
@@ -36,13 +36,13 @@ const toggleButtonState = (inputList, submitButton, settings) => {
 
 const setEventListeners = (formElement, settings) => {
     const inputList = [...formElement.querySelectorAll(settings.inputSelector)];
-    const submitButton =  formElement.querySelector(settings.submitButtonSelector);
+    const submitButton = formElement.querySelector(settings.submitButtonSelector);
     inputList.forEach((input) => {
-        input.addEventListener('input', (e) => {
+        input.addEventListener("input", (e) => {
             //check validity
             checkInputValidity(formElement, input, settings);
             //toggle button
-            toggleButtonState(inputList, submitButton , settings);
+            toggleButtonState(inputList, submitButton, settings);
         });
     });
 };
@@ -61,5 +61,5 @@ enableValidation({
     submitButtonSelector: ".popup__button",
     inactiveButtonClass: "popup__button_disabled",
     inputErrorClass: "popup__input_type_error",
-    errorClass: "popup__error_visible"
-  });
+    errorClass: "popup__error_visible",
+});

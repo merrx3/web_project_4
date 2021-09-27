@@ -26,7 +26,7 @@
                         <button class="profile__add-button" type="button"><img src="images/add-button-vector.svg" alt="plus sign icon" class="profile__plus-sign" /></button>
                     </div>
                 </section>
-                <div class="modal popup js-edit-modal">
+                <div id="js-edit-modal" class="modal popup">
                     <div class="modal__box">
                         <button class="modal__close-btn" id="modal-close-btn" type="button"><img src="./images/close-button.svg" alt="Close window button" class="modal__close-img" /></button>
                         <form id="modal-edit-form" name="popUp" class="popup__form">
@@ -39,7 +39,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="modal popup js-add-modal">
+                <div id="js-add-modal" class="modal popup">
                     <div class="modal__box">
                         <button class="modal__close-btn" id="add-close-btn" type="button"><img src="./images/close-button.svg" alt="Close window button" class="modal__close-img" /></button>
                         <form id="modal-add-form" name="popUp" class="popup__form">
@@ -52,10 +52,10 @@
                         </form>
                     </div>
                 </div>
-                <div class="modal js-preview-modal">
+                <div id="js-preview-modal" class="modal">
                     <div class="modal__box modal__box_type_preview">
                         <button class="modal__close-btn" id="preview-close-btn" type="button"><img src="./images/close-button.svg" alt="Close window button" class="modal__close-img" /></button>
-                        <img class="modal__preview-image" src="https://code.s3.yandex.net/web-code/yosemite.jpg" alt="photo of location on post">
+                        <img class="modal__preview-image" src="https://code.s3.yandex.net/web-code/yosemite.jpg" alt="">
                         <p class="modal__preview-caption"></p>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
         </div>
         <template id="card-template">
             <li class="photo-grid__post">
-                <div class="photo-grid__photo" id="link"></div>
+                <div class="photo-grid__photo" id="link" alt=""></div>
                 <button class="photo-grid__trash-btn" type="button"><img src="./images/Trashcan.svg" alt="Trashcan icon" class="photo-grid__trash" /></button>
                 <div class="photo-grid__info">
                     <h2 class="photo-grid__caption" id="caption"></h2>

@@ -1,114 +1,112 @@
 const initialCards = [
     {
-      name: "Yosemite Valley",
-      link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+        name: "Yosemite Valley",
+        link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+        alt: "",
     },
     {
-      name: "Lake Louise",
-      link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+        name: "Lake Louise",
+        link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+        alt: "",
     },
     {
-      name: "Bald Mountains",
-      link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+        name: "Bald Mountains",
+        link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+        alt: "",
     },
     {
-      name: "Latemar",
-      link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+        name: "Latemar",
+        link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+        alt: "",
     },
     {
-      name: "Vanoise National Park",
-      link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
+        name: "Vanoise National Park",
+        link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+        alt: "",
     },
     {
-      name: "Lago di Braies",
-      link: "https://code.s3.yandex.net/web-code/lago.jpg"
-    }
-  ]; 
-
+        name: "Lago di Braies",
+        link: "https://code.s3.yandex.net/web-code/lago.jpg",
+        alt: "",
+    },
+];
 
 // =====
 // Wrappers
 // =====
-const editModalWindow = document.querySelector('.js-edit-modal');
-const previewImageModalWindow = document.querySelector('.js-preview-modal');
-const modalEditFormElement = document.querySelector('#modal-edit-form');
-const placesList = document.querySelector('.photo-grid__gallery');
-const previewImageElement = document.querySelector('.modal__preview-image');
-const previewImageCaption = document.querySelector('.modal__preview-caption');
-const modalAddFormElement = document.querySelector('#modal-add-form');
-const addModalWindow = document.querySelector('.js-add-modal');
-
-
+const editModalWindow = document.querySelector("#js-edit-modal");
+const previewImageModalWindow = document.querySelector("#js-preview-modal");
+const modalEditFormElement = document.querySelector("#modal-edit-form");
+const placesList = document.querySelector(".photo-grid__gallery");
+const previewImageElement = document.querySelector(".modal__preview-image");
+const previewImageCaption = document.querySelector(".modal__preview-caption");
+const modalAddFormElement = document.querySelector("#modal-add-form");
+const addModalWindow = document.querySelector("#js-add-modal");
+const modalOpen = document.querySelector(".modal_open");
 
 // =====
 // Buttons
 // =====
-const profileLikeBtn = document.querySelector('.photo-grid__like');
-const profileHeart = document.querySelector('#black-heart');
-const modalEditBtn = document.querySelector('#profile-edit-btn');
-const editModalCloseBtn = editModalWindow.querySelector('#modal-close-btn');
-const addModalButton = document.querySelector('.profile__add-button');
-const addModalCloseBtn = addModalWindow.querySelector('#add-close-btn');
-const previewImageCloseBtn = previewImageModalWindow.querySelector('#preview-close-btn');
-const modalAddForm = document.querySelector('#modal-add-form');
-const saveModalBtn = document.querySelector('.modal__save-btn');
-const createModalBtn = document.querySelector('.modal__create-btn');
-
-
+const profileLikeBtn = document.querySelector(".photo-grid__like");
+const profileHeart = document.querySelector("#black-heart");
+const modalEditBtn = document.querySelector("#profile-edit-btn");
+const editModalCloseBtn = editModalWindow.querySelector("#modal-close-btn");
+const addModalButton = document.querySelector(".profile__add-button");
+const addModalCloseBtn = addModalWindow.querySelector("#add-close-btn");
+const previewImageCloseBtn = previewImageModalWindow.querySelector("#preview-close-btn");
+const modalAddForm = document.querySelector("#modal-add-form");
+const saveModalBtn = document.querySelector(".modal__save-btn");
+const createModalBtn = document.querySelector(".modal__create-btn");
 
 // =====
 // Inputs
 // =====
-const modalNameInput = document.querySelector('.modal-name-input');
-const modalBioInput = document.querySelector('.modal-bio-input');
-const profileName = document.querySelector('.profile__name');
-const profileBio = document.querySelector('.profile__bio');
-const postTitle = document.querySelector('.modal__input-text_title');
-const postLink = document.querySelector('.modal__input-text_link');
-
-
+const modalNameInput = document.querySelector(".modal-name-input");
+const modalBioInput = document.querySelector(".modal-bio-input");
+const profileName = document.querySelector(".profile__name");
+const profileBio = document.querySelector(".profile__bio");
+const postTitle = document.querySelector(".modal__input-text_title");
+const postLink = document.querySelector(".modal__input-text_link");
 
 // =====
 // Templates
 // =====
-const cardTemplate = document.querySelector('#card-template').content.querySelector('.photo-grid__post');
-
+const cardTemplate = document.querySelector("#card-template").content.querySelector(".photo-grid__post");
 
 // =====
 // Handlers
 // =====
-/*function toggleModalWindow(modal) {
-    modal.classList.toggle('modal_open');
-}*/
 
-function closeModalOnClick(evt) {
-    evt.target.classList.remove("modal_open");
-  }
-  
-  function closeModalOnEscape(evt) {
-    if (evt.key === "Escape") {
-      return closeModal(document.querySelector(".modal_open"));
-    }
-  }
-  
-  function openModal(modal) {
+function openModal(modal) {
+    modal.classList.add("modal_open");
     document.addEventListener("click", closeModalOnClick);
     document.addEventListener("keydown", closeModalOnEscape);
-    return modal.classList.add("modal_open");
-  }
+}
 
-  function closeModal(modal) {
+function closeModal(modal) {
+    modal.classList.remove("modal_open");
     document.removeEventListener("click", closeModalOnClick);
     document.removeEventListener("keydown", closeModalOnEscape);
-    return modal.classList.remove("modal_open");
-  }
+}
 
-function editFormSubmit(e) {
+function closeModalOnClick(evt) {
+    if (evt.target.classList.contains("modal_open")) {
+        return closeModal(evt.target);
+    }
+}
+
+function closeModalOnEscape(evt) {
+    if (evt.key === "Escape") {
+        return closeModal(document.querySelector(".modal_open"));
+    }
+}
+
+const submitEditForm = (e) => {
     e.preventDefault();
 
     profileName.textContent = modalNameInput.value;
     profileBio.textContent = modalBioInput.value;
-}
+};
 
 function openEditModal() {
     modalNameInput.value = profileName.textContent;
@@ -119,25 +117,25 @@ function generateCard(card) {
     const cardElement = cardTemplate.cloneNode(true);
 
     function deleteCard(e) {
-        e.target.closest('.photo-grid__post').remove();
+        e.target.closest(".photo-grid__post").remove();
     }
-    const deleteCardBtn = cardElement.querySelector('.photo-grid__trash-btn');
+    const deleteCardBtn = cardElement.querySelector(".photo-grid__trash-btn");
     deleteCardBtn.addEventListener("click", deleteCard);
 
-    function activeLikeBtn(cardElement) {
-        cardElement.classList.toggle('photo-grid__like-btn_active');
-        }
-    const likeBtn = cardElement.querySelector('.photo-grid__like-btn');
-    const photoLikeBtn = cardElement.querySelector('#js-like-btn');
-    photoLikeBtn.addEventListener("click", () => activeLikeBtn(likeBtn));
-    
-    cardElement.querySelector('.photo-grid__caption').textContent = card.name;
-    const imageEl = cardElement.querySelector('.photo-grid__photo');
+    const handleActiveLikeBtn = (cardElement) => {
+        cardElement.classList.toggle("photo-grid__like-btn_active");
+    };
+    const likeBtn = cardElement.querySelector(".photo-grid__like-btn");
+    likeBtn.addEventListener("click", () => handleActiveLikeBtn(likeBtn));
+
+    cardElement.querySelector(".photo-grid__caption").textContent = card.name;
+    const imageEl = cardElement.querySelector(".photo-grid__photo");
     imageEl.style.backgroundImage = `url(${card.link})`;
 
-    imageEl.addEventListener("click", function() {
+    imageEl.addEventListener("click", function () {
         previewImageElement.src = card.link;
-        previewImageCaption.textContent = card.name
+        previewImageElement.textContent = card.alt;
+        previewImageCaption.textContent = card.name;
         openModal(previewImageModalWindow);
     });
     return cardElement;
@@ -153,35 +151,31 @@ function addRenderCard(card, container) {
     container.prepend(card);
 }
 
-function addFormSubmit(evt) {
+const submitAddForm = (evt) => {
     evt.preventDefault();
     const newPost = {
-        "name": postTitle.value,
-        "link": postLink.value
-    }
+        name: postTitle.value,
+        link: postLink.value,
+    };
     const newPostElement = generateCard(newPost);
     addRenderCard(newPostElement, placesList);
-}
-modalAddForm.addEventListener("submit", addFormSubmit);
-
+};
+modalAddForm.addEventListener("submit", submitAddForm);
 
 // =====
 // Event Listeners
 // =====
 modalEditBtn.addEventListener("click", () => openModal(editModalWindow));
-modalEditBtn.addEventListener('click', () => openEditModal(editFormSubmit));
+modalEditBtn.addEventListener("click", () => openEditModal(submitEditForm));
 editModalCloseBtn.addEventListener("click", () => closeModal(editModalWindow));
-modalEditFormElement.addEventListener("submit", editFormSubmit);
+modalEditFormElement.addEventListener("submit", submitEditForm);
 addModalButton.addEventListener("click", () => openModal(addModalWindow));
 addModalCloseBtn.addEventListener("click", () => closeModal(addModalWindow));
 previewImageCloseBtn.addEventListener("click", () => closeModal(previewImageModalWindow));
 saveModalBtn.addEventListener("click", () => closeModal(editModalWindow));
 createModalBtn.addEventListener("click", () => closeModal(addModalWindow));
 
-
-
-
-initialCards.forEach(function(card) {
+initialCards.forEach(function (card) {
     const newCard = generateCard(card);
     renderCard(newCard, placesList);
 });
