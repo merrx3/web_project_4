@@ -153,6 +153,8 @@ function addRenderCard(card, container) {
 }
 
 const submitAddForm = (evt) => {
+    createModalBtn.disabled = true;
+    createModalBtn.classList.add("popup__button_disabled");
     evt.preventDefault();
     const newPost = {
         name: postTitle.value,
@@ -162,6 +164,7 @@ const submitAddForm = (evt) => {
     addRenderCard(newPostElement, placesList);
     evt.target.reset();
 };
+
 modalAddForm.addEventListener("submit", submitAddForm);
 
 // =====
