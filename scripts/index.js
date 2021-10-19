@@ -1,3 +1,6 @@
+import FormValidator from './FormValidator.js';
+import Card from './Card.js';
+
 const initialCards = [
     {
         name: "Yosemite Valley",
@@ -77,31 +80,35 @@ const cardTemplate = document.querySelector("#card-template").content.querySelec
 // Handlers
 // =====
 
+//Open Modal
 function openModal(modal) {
     modal.classList.add("modal_open");
     document.addEventListener("click", closeModalOnClick);
     document.addEventListener("keydown", closeModalOnEscape);
 }
 
+//Close Modal
 function closeModal(modal) {
     modal.classList.remove("modal_open");
     document.removeEventListener("click", closeModalOnClick);
     document.removeEventListener("keydown", closeModalOnEscape);
 }
 
-
+//Closes modal on click
 function closeModalOnClick(evt) {
     if (evt.target.classList.contains("modal_open")) {
         return closeModal(evt.target);
     }
 }
 
+//Closes modal on esc
 function closeModalOnEscape(evt) {
     if (evt.key === "Escape") {
         return closeModal(document.querySelector(".modal_open"));
     }
 }
 
+//Submits edited profile
 const submitEditForm = (e) => {
     e.preventDefault();
 
@@ -109,6 +116,7 @@ const submitEditForm = (e) => {
     profileBio.textContent = modalBioInput.value;
 };
 
+//Fills in information inputted
 function openEditModal() {
     modalNameInput.value = profileName.textContent;
     modalBioInput.value = profileBio.textContent;
@@ -143,6 +151,7 @@ function generateCard(card) {
 }
 
 function renderCard(card, container) {
+    const newCard = new Card(card, '#card-template').produceCard();
     //append it to list
     container.append(card);
 }
@@ -184,3 +193,23 @@ initialCards.forEach(function (card) {
     const newCard = generateCard(card);
     renderCard(newCard, placesList);
 });
+
+//=====
+//Validation
+//=====
+const addFormEl = addModalWindow.querySelector('.popup');
+const editFormEl = modalEditFormElement.querySelector('.popup');
+
+const formValidationConfig = {
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_disabled",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__error_visible",
+}
+
+const addFormValidator = new FormValidator(formValidationConfig, addFormEl);
+addFormValidator.enableValidation();
+
+const editFormValidator = new FormValidator(formValidationConfig, editFormEl);
+addFormValidator.enableValidation();
