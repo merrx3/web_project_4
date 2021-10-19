@@ -122,7 +122,7 @@ function openEditModal() {
     modalBioInput.value = profileBio.textContent;
 }
 
-function generateCard(card) {
+/*function generateCard(card) {
     const cardElement = cardTemplate.cloneNode(true);
 
     function deleteCard(e) {
@@ -148,17 +148,18 @@ function generateCard(card) {
         openModal(previewImageModalWindow);
     });
     return cardElement;
-}
+}*/
 
 function renderCard(card, container) {
     const newCard = new Card(card, '#card-template').produceCard();
     //append it to list
-    container.append(card);
+    container.append(newCard);
 }
 
 function addRenderCard(card, container) {
     //append it to list
-    container.prepend(card);
+    const newCard = new Card(data, '#card-template').produceCard();
+    container.prepend(newCard);
 }
 
 const submitAddForm = (evt) => {
@@ -190,8 +191,7 @@ saveModalBtn.addEventListener("click", () => closeModal(editModalWindow));
 createModalBtn.addEventListener("click", () => closeModal(addModalWindow));
 
 initialCards.forEach(function (card) {
-    const newCard = generateCard(card);
-    renderCard(newCard, placesList);
+    renderCard(card, placesList);
 });
 
 //=====
