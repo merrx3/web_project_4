@@ -197,8 +197,8 @@ initialCards.forEach(function (card) {
 //=====
 //Validation
 //=====
-const addFormEl = addModalWindow.querySelector('.popup');
-const editFormEl = modalEditFormElement.querySelector('.popup');
+const addFormEl = addModalWindow.querySelector('.popup__form');
+const editFormEl = modalEditFormElement.querySelector('.popup__form');
 
 const formValidationConfig = {
     inputSelector: ".popup__input",
@@ -212,4 +212,4 @@ const addFormValidator = new FormValidator(formValidationConfig, addFormEl);
 addFormValidator.enableValidation();
 
 const editFormValidator = new FormValidator(formValidationConfig, editFormEl);
-addFormValidator.enableValidation();
+editFormValidator.enableValidation();
