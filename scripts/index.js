@@ -198,7 +198,7 @@ initialCards.forEach(function (card) {
 //Validation
 //=====
 const addFormEl = addModalWindow.querySelector('.popup__form');
-const editFormEl = modalEditFormElement.querySelector('.popup__form');
+const editFormEl = editModalWindow.querySelector('.popup__form');
 
 const formValidationConfig = {
     inputSelector: ".popup__input",
