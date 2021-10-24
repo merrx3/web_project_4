@@ -41,25 +41,20 @@ const editModalWindow = document.querySelector("#js-edit-modal");
 const previewImageModalWindow = document.querySelector("#js-preview-modal");
 const modalEditFormElement = document.querySelector("#modal-edit-form");
 const placesList = document.querySelector(".photo-grid__gallery");
-const previewImageElement = document.querySelector(".modal__preview-image");
-const previewImageCaption = document.querySelector(".modal__preview-caption");
-const modalAddFormElement = document.querySelector("#modal-add-form");
 const addModalWindow = document.querySelector("#js-add-modal");
-const modalOpen = document.querySelector(".modal_open");
+const createModalBtn = document.querySelector(".modal__create-btn");
+
+
 
 // =====
 // Buttons
 // =====
-const profileLikeBtn = document.querySelector(".photo-grid__like-btn");
-const profileHeart = document.querySelector("#black-heart");
 const modalEditBtn = document.querySelector("#profile-edit-btn");
 const editModalCloseBtn = editModalWindow.querySelector("#modal-close-btn");
 const addModalButton = document.querySelector(".profile__add-button");
 const addModalCloseBtn = addModalWindow.querySelector("#add-close-btn");
 const previewImageCloseBtn = previewImageModalWindow.querySelector("#preview-close-btn");
-const modalAddForm = document.querySelector("#modal-add-form");
 const saveModalBtn = document.querySelector(".modal__save-btn");
-const createModalBtn = document.querySelector(".modal__create-btn");
 
 // =====
 // Inputs
@@ -68,8 +63,7 @@ const modalNameInput = document.querySelector(".modal-name-input");
 const modalBioInput = document.querySelector(".modal-bio-input");
 const profileName = document.querySelector(".profile__name");
 const profileBio = document.querySelector(".profile__bio");
-const postTitle = document.querySelector(".modal__input-text_title");
-const postLink = document.querySelector(".modal__input-text_link");
+
 
 // =====
 // Templates
@@ -151,18 +145,12 @@ function openEditModal() {
 }*/
 
 function renderCard(card, container) {
-    const newCard = new Card(card, '#card-template').produceCard();
+    const newCard = new Card(card, '#card-template').generateCard();
     //append it to list
     container.append(newCard);
 }
 
-function addRenderCard(card, container) {
-    //append it to list
-    const newCard = new Card(data, '#card-template').produceCard();
-    container.prepend(newCard);
-}
-
-const submitAddForm = (evt) => {
+/*const submitAddForm = (evt) => {
     createModalBtn.disabled = true;
     createModalBtn.classList.add("popup__button_disabled");
     evt.preventDefault();
@@ -173,9 +161,9 @@ const submitAddForm = (evt) => {
     const newPostElement = generateCard(newPost);
     addRenderCard(newPostElement, placesList);
     evt.target.reset();
-};
+};*/
 
-modalAddForm.addEventListener("submit", submitAddForm);
+//modalAddForm.addEventListener("submit", addFormSubmit);
 
 // =====
 // Event Listeners
@@ -190,8 +178,8 @@ previewImageCloseBtn.addEventListener("click", () => closeModal(previewImageModa
 saveModalBtn.addEventListener("click", () => closeModal(editModalWindow));
 createModalBtn.addEventListener("click", () => closeModal(addModalWindow));
 
-initialCards.forEach(function (card) {
-    renderCard(card, placesList);
+initialCards.forEach(function (cardElement) {
+    renderCard(cardElement, placesList);
 });
 
 //=====
@@ -200,7 +188,7 @@ initialCards.forEach(function (card) {
 const addFormEl = addModalWindow.querySelector('.popup__form');
 const editFormEl = editModalWindow.querySelector('.popup__form');
 
-const formValidationConfig = {
+export const formValidationConfig = {
     inputSelector: ".popup__input",
     submitButtonSelector: ".popup__button",
     inactiveButtonClass: "popup__button_disabled",
