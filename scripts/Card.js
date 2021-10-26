@@ -3,8 +3,6 @@ import { formValidationConfig } from "./index.js";
 const previewImageModalWindow = document.querySelector("#js-preview-modal");
 const previewImageElement = document.querySelector(".modal__preview-image");
 const previewImageCaption = document.querySelector(".modal__preview-caption");
-const createModalBtn = document.querySelector(".modal__create-btn");
-const modalAddForm = document.querySelector("#modal-add-form");
 
 
 
@@ -31,21 +29,6 @@ function closeModalOnEscape(evt) {
     if (evt.key === "Escape") {
         return closeModal(document.querySelector(".modal_open"));
     }
-}
-function addRenderCard(card, container) {
-    //append it to list
-    const newCard = new Card(card, '#card-template').generateCard();
-    container.prepend(newCard);
-}
-
-function addFormSubmit(evt) {
-    createModalBtn.disabled = true;
-    createModalBtn.classList.add("popup__button_disabled");
-    evt.preventDefault();
-    const newPost = new Card(formValidationConfig, modalAddForm);;
-    const newPostElement = newPost.generateCard();
-    addRenderCard(newPostElement, placesList);
-    evt.target.reset();
 }
 
 class Card {
@@ -85,7 +68,7 @@ class Card {
         this._element.querySelector(".photo-grid__trash-btn").addEventListener("click", () => { this._deleteCard() });
         this._element.querySelector(".photo-grid__photo").addEventListener("click", () => { this._handlePreviewPicture() });
 
-        modalAddForm.addEventListener('submit', addFormSubmit);
+        //modalAddForm.addEventListener('submit', addFormSubmit);
     }
     
     generateCard() {

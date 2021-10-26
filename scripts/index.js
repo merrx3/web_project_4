@@ -42,7 +42,8 @@ const previewImageModalWindow = document.querySelector("#js-preview-modal");
 const modalEditFormElement = document.querySelector("#modal-edit-form");
 const placesList = document.querySelector(".photo-grid__gallery");
 const addModalWindow = document.querySelector("#js-add-modal");
-const createModalBtn = document.querySelector(".modal__create-btn");
+const modalAddForm = document.querySelector("#modal-add-form");
+
 
 
 
@@ -55,6 +56,8 @@ const addModalButton = document.querySelector(".profile__add-button");
 const addModalCloseBtn = addModalWindow.querySelector("#add-close-btn");
 const previewImageCloseBtn = previewImageModalWindow.querySelector("#preview-close-btn");
 const saveModalBtn = document.querySelector(".modal__save-btn");
+const createModalBtn = document.querySelector(".modal__create-btn");
+
 
 // =====
 // Inputs
@@ -63,6 +66,8 @@ const modalNameInput = document.querySelector(".modal-name-input");
 const modalBioInput = document.querySelector(".modal-bio-input");
 const profileName = document.querySelector(".profile__name");
 const profileBio = document.querySelector(".profile__bio");
+const postTitle = document.querySelector(".modal__input-text_title"); 
+const postLink = document.querySelector(".modal__input-text_link"); 
 
 
 // =====
@@ -150,20 +155,25 @@ function renderCard(card, container) {
     container.append(newCard);
 }
 
-/*const submitAddForm = (evt) => {
+function addRenderCard(card, container) {
+    //append it to list
+    const newCard = new Card(card, '#card-template').generateCard();
+    container.prepend(newCard);
+}
+
+function addFormSubmit(evt) {
     createModalBtn.disabled = true;
     createModalBtn.classList.add("popup__button_disabled");
     evt.preventDefault();
-    const newPost = {
+    const cardData = {
         name: postTitle.value,
         link: postLink.value,
-    };
-    const newPostElement = generateCard(newPost);
-    addRenderCard(newPostElement, placesList);
+      }
+      addRenderCard(cardData, placesList);
     evt.target.reset();
-};*/
+}
 
-//modalAddForm.addEventListener("submit", addFormSubmit);
+modalAddForm.addEventListener("submit", addFormSubmit);
 
 // =====
 // Event Listeners
