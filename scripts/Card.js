@@ -1,40 +1,16 @@
+
+import { openModal, closeModal } from "./utils.js";
 import { formValidationConfig } from "./index.js";
 
 const previewImageModalWindow = document.querySelector("#js-preview-modal");
 const previewImageElement = document.querySelector(".modal__preview-image");
 const previewImageCaption = document.querySelector(".modal__preview-caption");
 
-
-
-function openModal(modal) {
-    modal.classList.add("modal_open");
-    document.addEventListener("click", closeModalOnClick);
-    document.addEventListener("keydown", closeModalOnEscape);
-}
-
-function closeModal(modal) {
-    modal.classList.remove("modal_open");
-    document.removeEventListener("click", closeModalOnClick);
-    document.removeEventListener("keydown", closeModalOnEscape);
-}
-
-
-function closeModalOnClick(evt) {
-    if (evt.target.classList.contains("modal_open")) {
-        return closeModal(evt.target);
-    }
-}
-
-function closeModalOnEscape(evt) {
-    if (evt.key === "Escape") {
-        return closeModal(document.querySelector(".modal_open"));
-    }
-}
-
 class Card {
     constructor(card, cardSelector) {
         this._name = card.name;
         this._link = card.link;
+        this._alt = card.alt;
 
         this._cardSelector = cardSelector;
     }
@@ -77,7 +53,7 @@ class Card {
         
         this._element.querySelector(".photo-grid__photo").style.backgroundImage = `url(${this._link})`;
         this._element.querySelector(".photo-grid__caption").textContent = this._name;
-        this._element.querySelector(".photo-grid__caption").alt = this._name;
+
 
         return this._element;
     }

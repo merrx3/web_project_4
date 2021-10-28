@@ -1,5 +1,6 @@
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
+import { openModal, closeModal, closeModalOnClick, closeModalOnEscape} from "./utils.js";
 
 const initialCards = [
     {
@@ -79,33 +80,6 @@ const cardTemplate = document.querySelector("#card-template").content.querySelec
 // Handlers
 // =====
 
-//Open Modal
-function openModal(modal) {
-    modal.classList.add("modal_open");
-    document.addEventListener("click", closeModalOnClick);
-    document.addEventListener("keydown", closeModalOnEscape);
-}
-
-//Close Modal
-function closeModal(modal) {
-    modal.classList.remove("modal_open");
-    document.removeEventListener("click", closeModalOnClick);
-    document.removeEventListener("keydown", closeModalOnEscape);
-}
-
-//Closes modal on click
-function closeModalOnClick(evt) {
-    if (evt.target.classList.contains("modal_open")) {
-        return closeModal(evt.target);
-    }
-}
-
-//Closes modal on esc
-function closeModalOnEscape(evt) {
-    if (evt.key === "Escape") {
-        return closeModal(document.querySelector(".modal_open"));
-    }
-}
 
 //Submits edited profile
 const submitEditForm = (e) => {
@@ -119,35 +93,8 @@ const submitEditForm = (e) => {
 function openEditModal() {
     modalNameInput.value = profileName.textContent;
     modalBioInput.value = profileBio.textContent;
+    modalEditBtn.addEventListener("click", () => openEditModal());
 }
-
-/*function generateCard(card) {
-    const cardElement = cardTemplate.cloneNode(true);
-
-    function deleteCard(e) {
-        e.target.closest(".photo-grid__post").remove();
-    }
-    const deleteCardBtn = cardElement.querySelector(".photo-grid__trash-btn");
-    deleteCardBtn.addEventListener("click", deleteCard);
-
-    const handleActiveLikeBtn = (cardElement) => {
-        cardElement.classList.toggle("photo-grid__like-btn_active");
-    };
-    const likeBtn = cardElement.querySelector(".photo-grid__like-btn");
-    likeBtn.addEventListener("click", () => handleActiveLikeBtn(likeBtn));
-
-    cardElement.querySelector(".photo-grid__caption").textContent = card.name;
-    const imageEl = cardElement.querySelector(".photo-grid__photo");
-    imageEl.style.backgroundImage = `url(${card.link})`;
-
-    imageEl.addEventListener("click", function () {
-        previewImageElement.src = card.link;
-        previewImageElement.textContent = card.alt;
-        previewImageCaption.textContent = card.name;
-        openModal(previewImageModalWindow);
-    });
-    return cardElement;
-}*/
 
 function renderCard(card, container) {
     const newCard = new Card(card, '#card-template').generateCard();
@@ -179,7 +126,6 @@ modalAddForm.addEventListener("submit", addFormSubmit);
 // Event Listeners
 // =====
 modalEditBtn.addEventListener("click", () => openModal(editModalWindow));
-modalEditBtn.addEventListener("click", () => openEditModal(submitEditForm));
 editModalCloseBtn.addEventListener("click", () => closeModal(editModalWindow));
 modalEditFormElement.addEventListener("submit", submitEditForm);
 addModalButton.addEventListener("click", () => openModal(addModalWindow));

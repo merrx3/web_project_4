@@ -34,7 +34,7 @@ class FormValidator {
     }
 
     _hasValidInputs(inputList) {
-        return !inputList.every((inputElement) => inputElement.validity.valid === true);
+        return inputList.every((inputElement) => inputElement.validity.valid === true);
     }
 
     _toggleButtonState(inputList, submitButton) {
