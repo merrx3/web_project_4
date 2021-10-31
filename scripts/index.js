@@ -93,7 +93,7 @@ const submitEditForm = (e) => {
 function openEditModal() {
     modalNameInput.value = profileName.textContent;
     modalBioInput.value = profileBio.textContent;
-    modalEditBtn.addEventListener("click", () => openEditModal());
+    openModal(editModalWindow);
 }
 
 function renderCard(card, container) {
@@ -125,7 +125,7 @@ modalAddForm.addEventListener("submit", addFormSubmit);
 // =====
 // Event Listeners
 // =====
-modalEditBtn.addEventListener("click", () => openModal(editModalWindow));
+modalEditBtn.addEventListener("click", openEditModal);
 editModalCloseBtn.addEventListener("click", () => closeModal(editModalWindow));
 modalEditFormElement.addEventListener("submit", submitEditForm);
 addModalButton.addEventListener("click", () => openModal(addModalWindow));
