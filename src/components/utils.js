@@ -1,4 +1,3 @@
-import Card from "./Card.js";
 
 export function openModal(modal) {
     modal.classList.add("modal_open");

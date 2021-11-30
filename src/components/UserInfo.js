@@ -1,19 +1,19 @@
 class UserInfo {
-    constructor({ nameSelector, jobSelector }) {
+    constructor({ nameSelector, bioSelector }) {
       this._nameSelector = nameSelector;
-      this._jobSelector = jobSelector;
+      this._bioSelector = bioSelector;
     }
-    
+
     getUserInfo() {
       return {
-        cardName: this._nameSelector.textContent,
-        cardJob: this._jobSelector.textContent,
+        userName: this._nameSelector.textContent,
+        userBio: this._bioSelector.textContent,
       }
     }
   
-    setUserInfo(nameSelector, jobSelector) {
-      this._nameSelector.textContent = nameSelector;
-      this._aboutSelector.textContent = jobSelector;
+    setUserInfo(userName, userBio) {
+      this._nameSelector.textContent = userName;
+      this._bioSelector.textContent = userBio;
     }
   }
 
