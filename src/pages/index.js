@@ -83,11 +83,11 @@ const cardTemplate = document.querySelector("#card-template").content.querySelec
 // Handlers
 // =====
 
-const imagePopup = new PopupWithImage(".modal__preview-image");
+const imagePopup = new PopupWithImage("#js-preview-modal");
 imagePopup.setEventListeners();
 
-const handleCardClick = (name, link) => {
-    imagePopup.open(name, link);
+const handleCardClick = (image, caption) => {
+    imagePopup.open({ image, caption });
 };
 
 //Submits edited profile
@@ -105,13 +105,13 @@ function openEditModal() {
     openModal(editModalWindow);
 }
 
-function renderCard(card, container, handleCardClick) {
+function renderCard(card, container) {
     const newCard = new Card(card, '#card-template', handleCardClick).generateCard();
     //append it to list
     container.append(newCard);
 }
 
-function addRenderCard(card, container, handleCardClick) {
+function addRenderCard(card, container) {
     //append it to list
     const newCard = new Card(card, '#card-template', handleCardClick).generateCard();
     container.prepend(newCard);

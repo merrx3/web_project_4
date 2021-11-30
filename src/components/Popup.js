@@ -19,7 +19,7 @@ class Popup {
     }
 
     open() {
-        this._popupElement.classList.add(".modal_open");
+        this._popupElement.classList.add("modal_open");
         document.addEventListener("keydown", this._closeModalOnEscape);
     }
 
