@@ -98,15 +98,15 @@ function openEditModal() {
     openModal(editModalWindow);
 }
 
-function renderCard(card, container) {
-    const newCard = new Card(card, '#card-template').generateCard();
+function renderCard(card, container, handleCardClick) {
+    const newCard = new Card(card, '#card-template', handleCardClick).generateCard();
     //append it to list
     container.append(newCard);
 }
 
-function addRenderCard(card, container) {
+function addRenderCard(card, container, handleCardClick) {
     //append it to list
-    const newCard = new Card(card, '#card-template').generateCard();
+    const newCard = new Card(card, '#card-template', handleCardClick).generateCard();
     container.prepend(newCard);
 }
 
