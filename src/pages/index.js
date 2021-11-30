@@ -1,6 +1,7 @@
 import "./index.css";
 
 import FormValidator from '../components/FormValidator.js';
+import PopupWithImage from '../components/PopupWithImage.js';
 import Card from '../components/Card.js';
 import { openModal, closeModal, closeModalOnClick, closeModalOnEscape} from "../utils/utils.js";
 
@@ -82,6 +83,12 @@ const cardTemplate = document.querySelector("#card-template").content.querySelec
 // Handlers
 // =====
 
+const imagePopup = new PopupWithImage(".modal__preview-image");
+imagePopup.setEventListeners();
+
+const handleCardClick = (name, link) => {
+    imagePopup.open(name, link);
+};
 
 //Submits edited profile
 const submitEditForm = (e) => {
