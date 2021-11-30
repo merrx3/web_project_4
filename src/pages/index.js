@@ -2,7 +2,11 @@ import "./index.css";
 
 import FormValidator from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm  from '../components/PopupWithForm.js';
+import Section from '../components/Section.js';
+import UserInfo from '../components/UserInfo.js';
 import Card from '../components/Card.js';
+
 import { openModal, closeModal, closeModalOnClick, closeModalOnEscape} from "../utils/utils.js";
 
 const initialCards = [
@@ -82,6 +86,14 @@ const cardTemplate = document.querySelector("#card-template").content.querySelec
 // =====
 // Handlers
 // =====
+/*const handleSubmitForm = ({userName, userBio}) => {
+    user.setUserInfo(userName, userBio);
+    popupSubmitForm.close();
+    editModalWindow.toggleButtonState();
+};
+
+const popupSubmitForm = new PopupWithForm(".popup__form", handleSubmitForm);
+popupSubmitForm.setEventListeners();*/
 
 const imagePopup = new PopupWithImage("#js-preview-modal");
 imagePopup.setEventListeners();
