@@ -34,10 +34,9 @@ class Card {
 
     _setEventListeners() {
         //this is where we set up the events
-        this._element.querySelector(".photo-grid__photo").addEventListener("click", () => {this._handleCardClick({ link: this._link, title: this._name })});
+        this._element.querySelector(".photo-grid__photo").addEventListener("click", () => {this._handleCardClick({ link: this._link, name: this._name })});
         this._element.querySelector(".photo-grid__like-btn").addEventListener("click", () => { this._handleActiveLikeBtn() });
         this._element.querySelector(".photo-grid__trash-btn").addEventListener("click", () => { this._deleteCard() });
-        this._element.querySelector(".photo-grid__photo").addEventListener("click", () => { this._handlePreviewPicture() });
 
     }
     
