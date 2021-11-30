@@ -2,7 +2,7 @@ import "./index.css";
 
 import FormValidator from '../components/FormValidator.js';
 import Card from '../components/Card.js';
-import { openModal, closeModal, closeModalOnClick, closeModalOnEscape} from "../components/utils.js";
+import { openModal, closeModal, closeModalOnClick, closeModalOnEscape} from "../utils/utils.js";
 
 const initialCards = [
     {
