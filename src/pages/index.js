@@ -8,92 +8,26 @@ import UserInfo from '../components/UserInfo.js';
 import Card from '../components/Card.js';
 
 import { openModal, closeModal, closeModalOnClick, closeModalOnEscape} from "../utils/utils.js";
-
-const initialCards = [
-    {
-        name: "Yosemite Valley",
-        link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-        alt: "",
-    },
-    {
-        name: "Lake Louise",
-        link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-        alt: "",
-    },
-    {
-        name: "Bald Mountains",
-        link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-        alt: "",
-    },
-    {
-        name: "Latemar",
-        link: "https://code.s3.yandex.net/web-code/latemar.jpg",
-        alt: "",
-    },
-    {
-        name: "Vanoise National Park",
-        link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-        alt: "",
-    },
-    {
-        name: "Lago di Braies",
-        link: "https://code.s3.yandex.net/web-code/lago.jpg",
-        alt: "",
-    },
-];
-
-// =====
-// Wrappers
-// =====
-const editModalWindow = document.querySelector("#js-edit-modal");
-const previewImageModalWindow = document.querySelector("#js-preview-modal");
-const modalEditFormElement = document.querySelector("#modal-edit-form");
-const placesList = document.querySelector(".photo-grid__gallery");
-const addModalWindow = document.querySelector("#js-add-modal");
-const modalAddForm = document.querySelector("#modal-add-form");
-
-
-
-
-// =====
-// Buttons
-// =====
-const modalEditBtn = document.querySelector("#profile-edit-btn");
-const editModalCloseBtn = editModalWindow.querySelector("#modal-close-btn");
-const addModalButton = document.querySelector(".profile__add-button");
-const addModalCloseBtn = addModalWindow.querySelector("#add-close-btn");
-const previewImageCloseBtn = previewImageModalWindow.querySelector("#preview-close-btn");
-const saveModalBtn = document.querySelector(".modal__save-btn");
-const createModalBtn = document.querySelector(".modal__create-btn");
-
-
-// =====
-// Inputs
-// =====
-const modalNameInput = document.querySelector(".modal-name-input");
-const modalBioInput = document.querySelector(".modal-bio-input");
-const profileName = document.querySelector(".profile__name");
-const profileBio = document.querySelector(".profile__bio");
-const postTitle = document.querySelector(".modal__input-text_title"); 
-const postLink = document.querySelector(".modal__input-text_link"); 
-
-
-// =====
-// Templates
-// =====
-const cardTemplate = document.querySelector("#card-template").content.querySelector(".photo-grid__post");
+import { initialCards } from "../utils/constants.js";
+import {editModalWindow, previewImageModalWindow, modalEditFormElement, placesList, addModalWindow, modalAddForm} from "../utils/constants.js";
+import { modalEditBtn, editModalCloseBtn, addModalButton, addModalCloseBtn, previewImageCloseBtn, saveModalBtn, createModalBtn } from "../utils/constants.js";
+import { modalNameInput,modalBioInput, profileName, profileBio, postTitle, postLink } from "../utils/constants.js";
+import { cardTemplate } from "../utils/constants.js";
 
 // =====
 // Handlers
 // =====
-/*const handleSubmitForm = ({userName, userBio}) => {
-    user.setUserInfo(userName, userBio);
-    popupSubmitForm.close();
-    editModalWindow.toggleButtonState();
-};
 
-const popupSubmitForm = new PopupWithForm(".popup__form", handleSubmitForm);
-popupSubmitForm.setEventListeners();*/
+const defaultCardList = new Section({
+    data: initialCards,
+    renderer: (item) => {
+      const card = new DefaultCard(item, "#card-template");
+      const cardElement = card.generateCard();
+      defaultCardList.setItem(cardElement);
+    }
+  }, placesList);
+
+  defaultCardList.renderCard();
 
 const imagePopup = new PopupWithImage("#js-preview-modal");
 imagePopup.setEventListeners();
