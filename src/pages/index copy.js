@@ -24,72 +24,31 @@ const defaultCardList = new Section({
       const card = new Card(item, "#card-template");
       const cardElement = card.generateCard();
       defaultCardList.setItem(cardElement);
-    },
-    handleCardClick: (image, caption) => {
-        imagePopup.open(image, caption);
-        imagePopup.setEventListeners();
-      },
+    }
   }, placesList);
 
-defaultCardList.renderItems();
+  defaultCardList.renderItems();
 
 const imagePopup = new PopupWithImage("#js-preview-modal");
+imagePopup.setEventListeners();
 
-/*const newUserInfo = UserInfo ({
-    nameSelector: profileName,
-    bioSelector: profileBio
-});*/
-
-const editPopup = new PopupWithForm ({
-    popupElement: editModalWindow,
-    handleFormSubmit: (e) => {
-        e.preventDefault();
-    
-        profileName.textContent = modalNameInput.value;
-        profileBio.textContent = modalBioInput.value;
-    },
-}, editModalWindow);
-
-function handleCardClick(card) {
-    imagePopup.open(card)
-  };
-
-const addCardPopup = new PopupWithForm ({
-    popupElement: addModalWindow,
-    addFormSubmit: (e) => {
-        createModalBtn.disabled = true;
-        createModalBtn.classList.add("popup__button_disabled");
-        e.preventDefault();
-        const cardData = {
-            name: postTitle.value,
-            link: postLink.value,
-          }
-          addRenderCard(cardData, placesList);
-        e.target.reset();
-    },
-}, addModalWindow); 
+const handleCardClick = (image, caption) => {
+    imagePopup.open({ image, caption });
+};
 
 //Submits edited profile
-function editFormSubmit(e){
+const submitEditForm = (e) => {
     e.preventDefault();
 
     profileName.textContent = modalNameInput.value;
     profileBio.textContent = modalBioInput.value;
-    editPopup.close();
 };
 
 //Fills in information inputted
-function openEditPopup() {
-    /*modalNameInput.value = profileName.textContent;
+function openEditModal() {
+    modalNameInput.value = profileName.textContent;
     modalBioInput.value = profileBio.textContent;
-    openModal(editModalWindow);*/
-    editPopup.open();
-    editPopup.setEventListeners();
-}
-
-function openAddPopup() {
-    addCardPopup.open();
-    addCardPopup.setEventListeners();
+    openModal(editModalWindow);
 }
 
 function renderCard(card, container) {
@@ -103,13 +62,8 @@ function addRenderCard(card, container) {
     const newCard = new Card(card, '#card-template', handleCardClick).generateCard();
     container.prepend(newCard);
 }
-function addFormSubmit(e){
-    e.preventDefault();
-    addCardPopup._handleFormSubmit(e);
-    addCardPopup.close();
-}
- 
-/*function addFormSubmit(evt) {
+
+function addFormSubmit(evt) {
     createModalBtn.disabled = true;
     createModalBtn.classList.add("popup__button_disabled");
     evt.preventDefault();
@@ -119,22 +73,21 @@ function addFormSubmit(e){
       }
       addRenderCard(cardData, placesList);
     evt.target.reset();
-}*/
+}
 
 modalAddForm.addEventListener("submit", addFormSubmit);
 
 // =====
 // Event Listeners
 // =====
-modalEditBtn.addEventListener("click", openEditPopup);
-//editModalCloseBtn.addEventListener("click", () => closeModal(editModalWindow));
-modalEditFormElement.addEventListener("submit", editFormSubmit);
-addModalButton.addEventListener("click", openAddPopup);
-modalAddForm.addEventListener("submit", addFormSubmit);
-//addModalCloseBtn.addEventListener("click", () => closeModal(addModalWindow));
-//previewImageCloseBtn.addEventListener("click", () => closeModal(previewImageModalWindow));
-//saveModalBtn.addEventListener("click", () => closeModal(editModalWindow));
-//createModalBtn.addEventListener("click", () => closeModal(addModalWindow));
+modalEditBtn.addEventListener("click", openEditModal);
+editModalCloseBtn.addEventListener("click", () => closeModal(editModalWindow));
+modalEditFormElement.addEventListener("submit", submitEditForm);
+addModalButton.addEventListener("click", () => openModal(addModalWindow));
+addModalCloseBtn.addEventListener("click", () => closeModal(addModalWindow));
+previewImageCloseBtn.addEventListener("click", () => closeModal(previewImageModalWindow));
+saveModalBtn.addEventListener("click", () => closeModal(editModalWindow));
+createModalBtn.addEventListener("click", () => closeModal(addModalWindow));
 
 initialCards.forEach(function (cardElement) {
     renderCard(cardElement, placesList);

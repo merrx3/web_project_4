@@ -1,12 +1,4 @@
 
-/*import { openModal, closeModal } from "./utils.js";
-import { formValidationConfig } from "../pages/index.js";
-import PopupWithImage from './PopupWithImage.js';
-
-const previewImageModalWindow = document.querySelector("#js-preview-modal");
-const previewImageElement = document.querySelector(".modal__preview-image");
-const previewImageCaption = document.querySelector(".modal__preview-caption");*/
-
 class Card {
     constructor(card, cardSelector, handleCardClick) {
         this._name = card.name;

@@ -41,7 +41,7 @@ export const initialCards = [
 export const editModalWindow = document.querySelector("#js-edit-modal");
 export const previewImageModalWindow = document.querySelector("#js-preview-modal");
 export const modalEditFormElement = document.querySelector("#modal-edit-form");
-export const placesList = document.querySelector(".photo-grid__gallery");
+export const placesList = ".photo-grid__gallery";
 export const addModalWindow = document.querySelector("#js-add-modal");
 export const modalAddForm = document.querySelector("#modal-add-form");
 
