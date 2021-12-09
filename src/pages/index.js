@@ -41,7 +41,7 @@ const imagePopup = new PopupWithImage("#js-preview-modal");
 });*/
 
 const editPopup = new PopupWithForm ({
-    popupElement: editModalWindow,
+    popupElement: modalEditFormElement,
     handleFormSubmit: (e) => {
         e.preventDefault();
     
