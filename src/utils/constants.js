@@ -38,12 +38,16 @@ export const initialCards = [
 // ====================  //
 //       Wrappers        //
 // ====================  //
-export const editModalWindow = document.querySelector("#js-edit-modal");
+export const editModalWindowSelector = "#js-edit-modal";
+export const editModalWindow = document.querySelector(editModalWindowSelector);
 export const previewImageModalWindow = document.querySelector("#js-preview-modal");
 export const modalEditFormElement = document.querySelector("#modal-edit-form");
 export const placesList = ".photo-grid__gallery";
-export const addModalWindow = document.querySelector("#js-add-modal");
+export const addModalWindowSelector = "#js-add-modal";
+export const addModalWindow = document.querySelector(addModalWindowSelector);
 export const modalAddForm = document.querySelector("#modal-add-form");
+export const addFormEl = addModalWindow.querySelector('.popup__form');
+export const editFormEl = editModalWindow.querySelector('.popup__form');
 
 // ====================  //
 //        Buttons        //
@@ -70,3 +74,10 @@ export const postLink = document.querySelector(".modal__input-text_link");
 //       Templates       //
 // ====================  //
 export const cardTemplate = document.querySelector("#card-template").content.querySelector(".photo-grid__post");
+export const formValidationConfig = {
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_disabled",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__error_visible",
+}
