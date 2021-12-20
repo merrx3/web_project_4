@@ -60,7 +60,7 @@ const editPopup = new PopupWithForm(
 const addCardPopup = new PopupWithForm(
     {
     addFormSubmit: ({name, link}) => {
-        generateCard({name, link});
+          defaultCardList.setItem({name, link});
      },
     },
    addModalWindowSelector,
@@ -81,3 +81,7 @@ modalEditBtn.addEventListener('click', () => {
 
   editPopup.open();
 });
+
+addModalButton.addEventListener('click', () => {
+    addCardPopup.open(); 
+})

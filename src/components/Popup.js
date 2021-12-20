@@ -7,7 +7,7 @@ class Popup {
 
     _closeModalOnClick(evt) {
         if (
-          evt.target.classList.contains("modal_open") || 
+          evt.target.classList.contains("modal__preview-image") || 
           evt.target.classList.contains("modal__close-img")) {
             return this.close();
         }
