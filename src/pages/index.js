@@ -10,7 +10,6 @@ import {
   initialCards,
   editModalWindowSelector,
   placesList,
-  addModalWindow, // should be a selector
   modalEditBtn,
   addModalButton,
   modalNameInput,
@@ -59,8 +58,12 @@ const editPopup = new PopupWithForm(
 
 const addCardPopup = new PopupWithForm(
     {
-    addFormSubmit: ({name, link}) => {
-          defaultCardList.setItem({name, link});
+    handleFormSubmit: (item) => {
+        const card = new Card(item, '#card-template', (name, link) => {
+            imagePopup.open({ name, link });
+          });
+          const cardElement = card.generateCard();
+          defaultCardList.setItem(cardElement);
      },
     },
    addModalWindowSelector,
