@@ -2,7 +2,7 @@
 class Card {
     constructor(card, cardSelector, handleCardClick) {
         this._name = card.name;
-        this._link = card.link;
+        this._image = card.image;
         this._alt = card.alt;
 
         this._cardSelector = cardSelector;
@@ -30,14 +30,14 @@ class Card {
         //this is where we set up the events
         this._element.querySelector(".photo-grid__like-btn").addEventListener("click", () => { this._handleActiveLikeBtn() });
         this._element.querySelector(".photo-grid__trash-btn").addEventListener("click", () => { this._deleteCard() });
-        this._element.addEventListener("click", () => this._handleCardClick(this._link, this._name));
+        this._element.querySelector(".photo-grid__photo").addEventListener("click", () => this._handleCardClick(this._image, this._name));
     }
     
     generateCard() {
         this._element = this._getTemplate();
         this._setEventListeners();
-        
-        this._element.querySelector(".photo-grid__photo").style.backgroundImage = `url(${this._link})`;
+
+        this._element.querySelector(".photo-grid__photo").style.backgroundImage = `url(${this._image})`;
         this._element.querySelector(".photo-grid__caption").textContent = this._name;
 
 

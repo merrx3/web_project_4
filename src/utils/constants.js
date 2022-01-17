@@ -4,32 +4,32 @@
 export const initialCards = [
     {
         name: "Yosemite Valley",
-        link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+        image: "https://code.s3.yandex.net/web-code/yosemite.jpg",
         alt: "",
     },
     {
         name: "Lake Louise",
-        link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+        image: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
         alt: "",
     },
     {
         name: "Bald Mountains",
-        link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+        image: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
         alt: "",
     },
     {
         name: "Latemar",
-        link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+        image: "https://code.s3.yandex.net/web-code/latemar.jpg",
         alt: "",
     },
     {
         name: "Vanoise National Park",
-        link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+        image: "https://code.s3.yandex.net/web-code/vanoise.jpg",
         alt: "",
     },
     {
         name: "Lago di Braies",
-        link: "https://code.s3.yandex.net/web-code/lago.jpg",
+        image: "https://code.s3.yandex.net/web-code/lago.jpg",
         alt: "",
     },
 ];

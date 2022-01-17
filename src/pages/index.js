@@ -1,4 +1,4 @@
-import "./index.css";
+import './index.css';
 
 import FormValidator from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
@@ -30,8 +30,8 @@ const defaultCardList = new Section(
   {
     data: initialCards,
     renderer: (item) => {
-      const card = new Card(item, '#card-template', (name, link) => {
-        imagePopup.open({ name, link });
+      const card = new Card(item, '#card-template', (name, image) => {
+        imagePopup.open({ name, image });
       });
       const cardElement = card.generateCard();
       defaultCardList.setItem(cardElement);
@@ -57,17 +57,17 @@ const editPopup = new PopupWithForm(
 );
 
 const addCardPopup = new PopupWithForm(
-    {
+  {
     handleFormSubmit: (item) => {
-        const card = new Card(item, '#card-template', (name, link) => {
-            imagePopup.open({ name, link });
-          });
-          const cardElement = card.generateCard();
-          defaultCardList.setItem(cardElement);
-     },
+      const card = new Card(item, '#card-template', (name, image) => {
+        imagePopup.open({ name, image });
+      });
+      const cardElement = card.generateCard();
+      defaultCardList.setItem(cardElement);
     },
-   addModalWindowSelector,
-   );
+  },
+  addModalWindowSelector,
+);
 
 // Setup classes
 defaultCardList.renderItems();
@@ -86,5 +86,5 @@ modalEditBtn.addEventListener('click', () => {
 });
 
 addModalButton.addEventListener('click', () => {
-    addCardPopup.open(); 
-})
+  addCardPopup.open();
+});
