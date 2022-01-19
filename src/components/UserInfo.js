@@ -1,19 +1,20 @@
+
 class UserInfo {
-    constructor({ nameSelector, bioSelector }) {
-      this._nameSelector = nameSelector;
-      this._bioSelector = bioSelector;
+    constructor({ userName , userJob }) {
+      this._userName = userName 
+      this._userJob = userJob;
     }
 
     getUserInfo() {
       return {
-        userName: this._nameSelector.textContent,
-        userBio: this._bioSelector.textContent,
+        name: this._userName.textContent,
+        job: this._userJob.textContent,
       }
     }
   
-    setUserInfo({userName, userBio}) {
-      this._nameSelector.textContent = userName;
-      this._bioSelector.textContent = userBio;
+    setUserInfo({name, job}) { 
+      this._userName.textContent = name; 
+      this._userJob.textContent = job; 
     }
   }
 

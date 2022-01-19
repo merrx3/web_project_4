@@ -25,16 +25,19 @@ import {
 
 const addFormValidator = new FormValidator(formValidationConfig, addFormEl);
 const editFormValidator = new FormValidator(formValidationConfig, editFormEl);
+function renderCard(item) {
+    const card = new Card(item, '#card-template', (name, image) => {
+        imagePopup.open({ name, image });
+    });
+      const cardElement = card.generateCard();
+      defaultCardList.addItem(cardElement);
+};
 
 const defaultCardList = new Section(
   {
-    data: initialCards,
+    items: initialCards,
     renderer: (item) => {
-      const card = new Card(item, '#card-template', (name, image) => {
-        imagePopup.open({ name, image });
-      });
-      const cardElement = card.generateCard();
-      defaultCardList.setItem(cardElement);
+      renderCard(item);
     },
   },
   placesList,
@@ -43,14 +46,14 @@ const defaultCardList = new Section(
 const imagePopup = new PopupWithImage('#js-preview-modal');
 
 const userInfo = new UserInfo({
-  nameSelector: profileName,
-  bioSelector: profileBio,
+  userName: profileName,
+  userJob: profileBio,
 });
 
 const editPopup = new PopupWithForm(
   {
     handleFormSubmit: ({ bio, name }) => {
-      userInfo.setUserInfo({ userName: name, userBio: bio });
+      userInfo.setUserInfo({ name: name, job: bio });
     },
   },
   editModalWindowSelector,
@@ -59,11 +62,7 @@ const editPopup = new PopupWithForm(
 const addCardPopup = new PopupWithForm(
   {
     handleFormSubmit: (item) => {
-      const card = new Card(item, '#card-template', (name, image) => {
-        imagePopup.open({ name, image });
-      });
-      const cardElement = card.generateCard();
-      defaultCardList.setItem(cardElement);
+      renderCard(item);
     },
   },
   addModalWindowSelector,
@@ -78,9 +77,9 @@ editFormValidator.enableValidation();
 
 // handle other
 modalEditBtn.addEventListener('click', () => {
-  const { userName, userBio } = userInfo.getUserInfo();
-  modalNameInput.value = userName;
-  modalBioInput.value = userBio;
+  const { name, job } = userInfo.getUserInfo();
+  modalNameInput.value = name;
+  modalBioInput.value = job;
 
   editPopup.open();
 });
