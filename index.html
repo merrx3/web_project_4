@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Around The U.S.</title>
+    <script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
+    <body class="page">
+        <div class="page__wrapper">
+            <header class="header">
+                <img src="3755f99ca093e6e21308.svg" alt="Around the U.S. logo" class="header__logo" />
+            </header>
+            <main class="content">
+                <section class="profile">
+                    <div class="profile__info">
+                        <img src="24a3c67c8a41c82a2d5d.jpg" alt="profile photo" class="profile__photo" />
+                        <div class="profile__text">
+                            <div class="profile__username">
+                                <h1 class="profile__name">Jacques Cousteau</h1>
+                                <button class="profile__edit-button" id="profile-edit-btn" type="button"><img src="3db4c7ac6cafc081dcf6.svg" alt="pencil icon" class="profile__pencil" /></button>
+                            </div>
+                            <p class="profile__bio">Adventurer</p>
+                        </div>
+                        <button class="profile__add-button" type="button"><img src="faab81195141bf296f8b.svg" alt="plus sign icon" class="profile__plus-sign" /></button>
+                    </div>
+                </section>
+                <div id="js-edit-modal" class="modal popup">
+                    <div class="modal__box">
+                        <button class="modal__close-btn" id="modal-close-btn" type="button"><img src="dc5a6cfb73484eb93dd4.svg" alt="Close window button" class="modal__close-img" /></button>
+                        <form id="modal-edit-form" name="popUp" class="popup__form">
+                            <h2 class="modal__box-title">Edit profile</h2>
+                            <input id="name-input" type="text" name="Name" placeholder="Name" class="modal__input-text modal-name-input popup__input" minlength="2" maxlength="40"  required/>
+                            <span id="name-input-error" class="popup__error-message"></span>
+                            <input id="bio-input" type="text" name="Bio" placeholder="About Me" class="modal__input-text modal-bio-input popup__input" minlength="2" maxlength="200" required/>
+                            <span id="bio-input-error" class="popup__error-message"></span>
+                            <input type="submit" value="Save" class="modal__save-btn popup__button popup__button_disabled" disabled/>
+                        </form>
+                    </div>
+                </div>
+                <div id="js-add-modal" class="modal popup">
+                    <div class="modal__box">
+                        <button class="modal__close-btn" id="add-close-btn" type="button"><img src="dc5a6cfb73484eb93dd4.svg" alt="Close window button" class="modal__close-img" /></button>
+                        <form id="modal-add-form" name="popUp" class="popup__form">
+                            <h2 class="modal__box-title">New place</h2>
+                            <input id="place-input" type="text" name="name" placeholder="Title" class="modal__input-text modal__input-text_title popup__input" minlength="1" maxlength="30" required />
+                            <span id="place-input-error" class="popup__error-message"></span>
+                            <input id="link-input" type="url" name="Image" placeholder="Image Link" class="modal__input-text modal__input-text_link popup__input" required/>
+                            <span id="link-input-error" class="popup__error-message"></span>
+                            <input type="submit" value="Create" class="modal__create-btn popup__button popup__button_disabled" disabled/>
+                        </form>
+                    </div>
+                </div>
+                <div id="js-preview-modal" class="modal">
+                    <div class="modal__box modal__box_type_preview">
+                        <button class="modal__close-btn" id="preview-close-btn" type="button"><img src="dc5a6cfb73484eb93dd4.svg" alt="Close window button" class="modal__close-img" /></button>
+                        <img class="modal__preview-image" src="https://code.s3.yandex.net/web-code/yosemite.jpg" alt="photo of location on post">
+                        <p class="modal__preview-caption"></p>
+                    </div>
+                </div>
+                <section class="photo-grid">
+                    <ul class="photo-grid__gallery">
+                    </ul>
+                </section>
+              
+            </main>
+            <footer class="footer">
+                <p class="footer__copyright">© 2021. Martha Ramos</p>
+            </footer>
+        </div>
+        <template id="card-template">
+            <li class="photo-grid__post">
+                <div class="photo-grid__photo" id="link" alt=""></div>
+                <button class="photo-grid__trash-btn" type="button"><img src="afb1b9d8d55f2b060052.svg" alt="Trashcan icon" class="photo-grid__trash" /></button>
+                <div class="photo-grid__info">
+                    <h2 class="photo-grid__caption" id="caption"></h2>
+                    <button class="photo-grid__like-btn" type="button" id="js-like-btn"></button>
+                </div>
+            </li>
+        </template>
+    </body>
+</html>
