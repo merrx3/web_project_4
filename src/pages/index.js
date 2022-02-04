@@ -21,6 +21,18 @@ import {
   profileBio,
   addModalWindowSelector,
 } from '../utils/constants.js';
+import Api from "../components/Api.js";
+
+//API
+const apiSetup = new Api ({
+    baseUrl: "https://around.nomoreparties.co/v1/group-12",
+    groupID: "group-12",
+    headers: {
+        authorization: "238e9991-52d4-4161-a913-f4692922eb00",
+        "Content-Type": "application/json",
+    },
+  });
+
 // Create new instances
 
 const addFormValidator = new FormValidator(formValidationConfig, addFormEl);
