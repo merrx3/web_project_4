@@ -24,7 +24,7 @@ import {
 import Api from "../components/Api.js";
 
 //API
-const apiSetup = new Api ({
+const api = new Api ({
     baseUrl: "https://around.nomoreparties.co/v1/group-12",
     groupID: "group-12",
     headers: {
@@ -99,3 +99,15 @@ modalEditBtn.addEventListener('click', () => {
 addModalButton.addEventListener('click', () => {
   addCardPopup.open();
 });
+
+let myData = null;
+
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+    .then( ([initialCards, userInfo]) => {
+      myData = userInfo
+      defaultCardList.items = initialCards
+      defaultCardList.renderItems()
+      myProfileInfo.setAvatar({link: myData.avatar})
+      myProfileInfo.setUserInfo({name: myData.name, about: myData.about})
+    })
+    .catch(err => `Unable to load data: ${err}`)

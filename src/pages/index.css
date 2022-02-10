@@ -8,14 +8,19 @@
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/profile/__bio/profile__bio.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
+@import url(../blocks/profile/__edit-button/__edit-button_photo/profile__edit-button_photo.css);
 @import url(../blocks/profile/__plus-sign/profile__plus-sign.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__pencil/profile__pencil.css);
 @import url(../blocks/profile/__photo/profile__photo.css);
+@import url(../blocks/profile/__overlay/profile__overlay.css);
+@import url(../blocks/profile/__overlay-container/profile__overlay-container.css);
 @import url(../blocks/profile/__text/profile__text.css);
 @import url(../blocks/profile/__username/profile__username.css);
+@import url(../blocks/photo-grid/__like-wrapper/photo-grid__like-wrapper.css);
 @import url(../blocks/photo-grid/__like-btn/photo-grid__like-btn.css);
+@import url(../blocks/photo-grid/__like-num/photo-grid__like-num.css);
 @import url(../blocks/photo-grid/__like-btn/_active/photo-grid__like-btn_active.css);
 @import url(../blocks/modal/modal.css);
 @import url(../blocks/popup/popup.css);
@@ -27,6 +32,7 @@
 @import url(../blocks/modal/__box/modal__box.css);
 @import url(../blocks/modal/__box/_type/modal__box_type_preview.css);
 @import url(../blocks/modal/__box-title/modal__box-title.css);
+@import url(../blocks/modal/__delete-title/modal__delete-title.css);
 @import url(../blocks/modal/__input-text/modal__input-text.css);
 @import url(../blocks/modal/__save-btn/modal__save-btn.css);
 @import url(../blocks/modal/__create/modal__create-btn.css);

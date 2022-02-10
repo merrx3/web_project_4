@@ -1,0 +1,17 @@
+.profile__edit-button_photo {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 40%;
+    left: 38%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-image: url(../../../../images/edit-pencil.svg);
+    opacity: 0;
+}
+
+.profile__edit-button_photo:hover {
+    opacity: 1;
+    transition: .3s ease;
+}

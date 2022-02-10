@@ -55,9 +55,31 @@ toggleCardLikes(cardID, like) {
     }).then(this._checkServerResponse);
 }
 
-// === 6. Creating a popup for deleting a card === //
+// === 7. Deleting a Card === //
+removeCard(cardID) {
+    return fetch(`${this._baseUrl}/cards/${cardID}`, {
+        method: "DELETE",
+        headers: this._headers,
+    }).then(this._checkServerResponse);
+}
 
+// === 8. Adding and Removing likes === //
+changeLikeStatus(cardID, like) {
+    return fetch (`${this._baseUrl}/cards/like/${cardID}`, {
+        method: like ? "PUT" : "DELETE",
+        headers: this._headers,
+    }).then(this._checkServerResponse);
+}
 
-
+// === 9. Updating profile picture === //
+setUserAvatar({ avatar }) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+        method: "PATCH",
+        headers: this._headers,
+        body: JSON.stringify({
+            avatar,
+        }),
+    }).then(this._checkServerResponse);
+}
 
 }

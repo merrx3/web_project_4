@@ -14,7 +14,12 @@
             <main class="content">
                 <section class="profile">
                     <div class="profile__info">
-                        <img src="<%=require('./images/Avatar.jpg')%>" alt="profile photo" class="profile__photo" />
+                        <div class="profile__overlay-container">
+                            <div class="profile__overlay">
+                                <button type="button" class="profile__edit-button profile__edit-button_photo"></button>
+                                <img src="<%=require('./images/Avatar.jpg')%>" alt="profile photo" class="profile__photo" />
+                            </div>
+                        </div>
                         <div class="profile__text">
                             <div class="profile__username">
                                 <h1 class="profile__name">Jacques Cousteau</h1>
@@ -51,6 +56,26 @@
                         </form>
                     </div>
                 </div>
+                <div id="js-delete-modal" class="modal popup">
+                    <div class="modal__box">
+                        <button class="modal__close-btn" id="add-close-btn" type="button"><img src="<%=require('./images/close-button.svg')%>" alt="Close window button" class="modal__close-img" /></button>
+                        <form name="popUp" class="popup__form">
+                            <h2 class="modal__delete-title">Are you sure?</h2>
+                            <input type="submit" value="Yes" class="popup__button" disabled/>
+                        </form>
+                    </div>
+                </div>
+                <div id="js-edit-avatar-modal"class="modal popup">
+                    <div class="modal__box">
+                        <button class="modal__close-btn" id="add-close-btn" type="button"><img src="<%=require('./images/close-button.svg')%>" alt="Close window button" class="modal__close-img" /></button>
+                        <form name="popUp" class="popup__form">
+                            <h2 class="modal__delete-title">Change profile picture</h2>
+                            <input id="link-input" type="url" name="Image" placeholder="Image Link" class="modal__input-text modal__input-text_link popup__input" required/>
+                            <span id="link-input-error" class="popup__error-message"></span>
+                            <input type="submit" value="Save" class="modal__create-btn popup__button popup__button_disabled" disabled/>
+                        </form>
+                    </div>
+                </div>
                 <div id="js-preview-modal" class="modal">
                     <div class="modal__box modal__box_type_preview">
                         <button class="modal__close-btn" id="preview-close-btn" type="button"><img src="<%=require('./images/close-button.svg')%>" alt="Close window button" class="modal__close-img" /></button>
@@ -74,7 +99,10 @@
                 <button class="photo-grid__trash-btn" type="button"><img src="<%=require('./images/Trashcan.svg')%>" alt="Trashcan icon" class="photo-grid__trash" /></button>
                 <div class="photo-grid__info">
                     <h2 class="photo-grid__caption" id="caption"></h2>
-                    <button class="photo-grid__like-btn" type="button" id="js-like-btn"></button>
+                    <div class="photo-grid__like-wrapper">
+                        <button class="photo-grid__like-btn" type="button" id="js-like-btn"></button>
+                        <p class="photo-grid__like-num">1</p>
+                    </div>
                 </div>
             </li>
         </template>

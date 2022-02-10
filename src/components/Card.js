@@ -1,11 +1,10 @@
-
 class Card {
     constructor(card, cardSelector, handleCardClick) {
         this._name = card.name;
         this._image = card.image;
         this._alt = card.alt;
-
         this._cardSelector = cardSelector;
+        
         this._handleCardClick = handleCardClick;
     }
 
@@ -46,3 +45,20 @@ class Card {
 }
 
 export default Card;
+
+
+        //({card, handleCardClick, handleDeleteClick, handleLikeClick}, cardSelector,  userID)
+        //this._likes = card.likes;
+        //this._userID = card.userID;
+        //this._card = card
+        //this._cardItem = document.querySelector(cardSelector);
+
+
+        /*this._trashButton = this._cardItem.querySelector(".photo-grid__trash-btn");
+        this._likeButton = this._cardItem.querySelector(".photo-grid__like-btn");
+        this._likeNumber = this._cardItem.querySelector(".photo-grid__like-num");
+        this._handleLikeClick = handleLikeClick;
+        this._handleDeleteClick =handleDeleteClick;*/
+
+        /*const cardElement = this._cardItem.content.querySelector('.photo-grid-post').cloneNode(true);
+        return cardElement;*/
