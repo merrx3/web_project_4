@@ -61,10 +61,23 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
 const addFormValidator = new FormValidator(formValidationConfig, addFormEl);
 const editFormValidator = new FormValidator(formValidationConfig, editFormEl);
 function renderCard(item) {
-    const card = new Card(item, '#card-template', (name, image) => {
-        imagePopup.open({ name, image });
-    });
-      const cardElement = card.generateCard();
+    const card = new Card ({
+        data: item,
+        handleCardClick: (data) => imagePopup.open(data),
+        userId: userData.getUserId(),
+        openDeleteModal: function openDeleteModal() {
+            deleteCardWindow.open(item._id, cardElement);
+        },
+        handleCardLike: function handleCardLike() {
+            if (card.isLiked()) {
+                api.toggleCardLikes(item._id)
+                    .then((data) => card.changeLikeStatys(data))
+                    .catch(err => console.log(`Error: ${err}`))
+            }
+        }
+    },
+    placesList);
+    const cardElement = card.generateCard();
       defaultCardList.addItem(cardElement);
 };
 
@@ -140,3 +153,9 @@ addModalButton.addEventListener('click', () => {
   addCardPopup.open();
 });
 
+
+  /*const card = new Card(item, '#card-template', (name, image) => {
+        imagePopup.open({ name, image });
+    });
+      const cardElement = card.generateCard();
+      defaultCardList.addItem(cardElement);*/

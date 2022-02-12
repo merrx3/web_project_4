@@ -1,16 +1,16 @@
 class Card {
     constructor({
-        card, 
+        data, 
         handleCardClick, 
         openDeleteModal, 
         handleCardLike, 
         userId,
     }, cardSelector) {
-        this._name = card.name;
-        this._image = card.image;
-        this._alt = card.alt;
-        this._likes = card.likes;
-        this._authUserId = card.owner._id;
+        this._name = data.name;
+        this._image = data.image;
+        this._alt = data.alt;
+        this._likes = data.likes;
+        this._authUserId = data.owner._id;
         this._userId = userId;
 
 
