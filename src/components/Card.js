@@ -10,7 +10,7 @@ class Card {
         this._image = data.image;
         this._alt = data.alt;
         this._likes = data.likes;
-        this._authUserId = data.owner._id;
+        this._authUserId = data.owner_id;
         this._userId = userId;
 
 
