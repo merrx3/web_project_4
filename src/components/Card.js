@@ -1,3 +1,5 @@
+import { cardTemplate } from '../utils/constants.js';
+
 class Card {
     constructor({
         data, 
@@ -5,7 +7,7 @@ class Card {
         openDeleteModal, 
         handleCardLike, 
         userId,
-    }, cardSelector) {
+    }, cardTemplate) {
         this._name = data.name;
         this._image = data.image;
         this._alt = data.alt;
@@ -13,8 +15,8 @@ class Card {
         this._authUserId = data.owner_id;
         this._userId = userId;
 
-
-        this._cardSelector = cardSelector;
+        //const cardSelector = document.querySelector("#card-template");
+        this._cardSelector = cardTemplate;
         this._handleCardClick = handleCardClick;
         this._openDeleteModal = openDeleteModal;
         this._handleCardLike = handleCardLike;
@@ -22,8 +24,6 @@ class Card {
 
     _getTemplate() {
         const cardElement = document.querySelector(this._cardSelector)
-        .content
-        .querySelector(".photo-grid__post")
         .cloneNode(true);
 
         return cardElement;
