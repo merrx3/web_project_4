@@ -3,18 +3,21 @@ import './index.css';
 import FormValidator from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupDelete from '../components/PopupDelete.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import Card from '../components/Card.js';
 import {
   initialCards,
   editModalWindowSelector,
+  deleteCardWindow,
   placesList,
   modalEditBtn,
   addModalButton,
   modalNameInput,
   modalBioInput,
   formValidationConfig,
+  profileImage,
   addFormEl,
   editFormEl,
   profileName,
@@ -32,6 +35,26 @@ const api = new Api ({
         "Content-Type": "application/json",
     },
   });
+
+
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+.then( ([initialCards, userInfo]) => {
+  const {
+      name,
+      bio,
+      avatar,
+      _id
+  } = userInfo;
+  userData.setUserInfo({
+      name: name,
+      job: bio,
+      _id: _id,
+      avatar: avatar
+  })
+  defaultCardList.renderedItems = initialCards;
+  defaultCardList.renderItems();
+})
+.catch(err => `Unable to load data: ${err}`)
 
 // Create new instances
 
@@ -57,9 +80,10 @@ const defaultCardList = new Section(
 
 const imagePopup = new PopupWithImage('#js-preview-modal');
 
-const userInfo = new UserInfo({
+const userData = new UserInfo({
   userName: profileName,
   userJob: profileBio,
+  userAvatar: profileImage
 });
 
 const editPopup = new PopupWithForm(
@@ -80,6 +104,22 @@ const addCardPopup = new PopupWithForm(
   addModalWindowSelector,
 );
 
+/* const handleDeleteImgFormSubmit = (cardID, something ) => {
+//call the api function
+  api.removeCard(cardID)
+    .then(() => {
+      something
+    })
+    .catch(err => console.log(err));
+}
+
+const deleteImagePopup = new PopupDelete(
+  {
+    handleFormSubmit: handleDeleteImgFormSubmit,
+  },
+  deleteCardWindow,
+); */
+
 // Setup classes
 defaultCardList.renderItems();
 editPopup.setEventListeners();
@@ -89,7 +129,7 @@ editFormValidator.enableValidation();
 
 // handle other
 modalEditBtn.addEventListener('click', () => {
-  const { name, job } = userInfo.getUserInfo();
+  const { name, job } = userData.getUserInfo();
   modalNameInput.value = name;
   modalBioInput.value = job;
 
@@ -100,14 +140,3 @@ addModalButton.addEventListener('click', () => {
   addCardPopup.open();
 });
 
-let myData = null;
-
-Promise.all([api.getInitialCards(), api.getUserInfo()])
-    .then( ([initialCards, userInfo]) => {
-      myData = userInfo
-      defaultCardList.items = initialCards
-      defaultCardList.renderItems()
-      myProfileInfo.setAvatar({link: myData.avatar})
-      myProfileInfo.setUserInfo({name: myData.name, about: myData.about})
-    })
-    .catch(err => `Unable to load data: ${err}`)

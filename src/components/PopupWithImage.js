@@ -7,12 +7,21 @@ class PopupWithImage extends Popup {
      this._popupCaption = this._popupElement.querySelector('.modal__preview-caption');
    }
  
-   open({ name, image }) {
-     this._popupImage.src = name;
-     this._popupImage.alt = name;
-     this._popupCaption.textContent = image;
+   open(card) {
+     this._popupImage.src = card.image;
+     this._popupImage.alt = card.name;
+     this._popupCaption.textContent = card.name;
      super.open();
    }
  }
 
 export default PopupWithImage;
+
+
+/*  open({ name, image }) {
+     this._popupImage.src = name;
+     this._popupImage.alt = name;
+     this._popupCaption.textContent = image;
+     super.open();
+   }
+  */

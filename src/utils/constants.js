@@ -69,6 +69,7 @@ export const modalNameInput = document.querySelector(".modal-name-input");
 export const modalBioInput = document.querySelector(".modal-bio-input");
 export const profileName = document.querySelector(".profile__name");
 export const profileBio = document.querySelector(".profile__bio");
+export const profileImage = document.querySelector(".profile__photo");
 export const postTitle = document.querySelector(".modal__input-text_title"); 
 export const postLink = document.querySelector(".modal__input-text_link"); 
 
