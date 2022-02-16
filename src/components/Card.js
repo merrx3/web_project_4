@@ -29,9 +29,9 @@ class Card {
         return cardElement;
     }
 
-    likeCount(card) {
-        this._likes = card.likes;
-        this._handleActiveLikeBtn;
+    updateLikeCount(data) {
+        this._likes = data.likes;
+        this._handleActiveLikeBtn();
     }
 
     _handleActiveLikeBtn() {
@@ -61,14 +61,14 @@ class Card {
     }
 
     _setEventListeners() {
-       this._likeButton.addEventListener("click", () => this._handleCardLike);
-       this._element.querySelector(".photo-grid__photo").addEventListener("click", () => this._openDeleteModal());
-     
-    }
+        this._likeButton.addEventListener("click", () => this._handleCardLike);
+        this._element.querySelector(".photo-grid__photo").addEventListener("click", () => this._openDeleteModal());
+      
+     }
     
     generateCard() {
         this._element = this._getTemplate();
-        this.likeCount = this._element.querySelector(".photo-grid__like-num");
+        this._likeCount = this._element.querySelector(".photo-grid__like-num");
         this._likeButton = this._element.querySelector(".photo-grid__like-btn");
         this._deleteButton = this._element.querySelector(".photo-grid__trash-btn");
        
