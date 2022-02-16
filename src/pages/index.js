@@ -23,6 +23,7 @@ import {
   profileName,
   profileBio,
   addModalWindowSelector,
+  cardTemplate,
 } from '../utils/constants.js';
 import Api from "../components/Api.js";
 
@@ -76,7 +77,7 @@ function renderCard(item) {
             }
         }
     },
-    placesList);
+    cardTemplate);
     const cardElement = card.generateCard();
       defaultCardList.addItem(cardElement);
 };
@@ -88,7 +89,7 @@ const defaultCardList = new Section(
       renderCard(item);
     },
   },
-  placesList,
+  cardTemplate,
 );
 
 const imagePopup = new PopupWithImage('#js-preview-modal');
