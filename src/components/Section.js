@@ -1,8 +1,11 @@
+import { cardTemplate } from "../utils/constants";
+
 class Section {
-    constructor ({ items, renderer }, containerSelector) {
+    constructor ({ items, renderer }, cardTemplate) {
         this.renderedItems = items;
         this._renderer = renderer;
-        this._container = document.querySelector(containerSelector);
+        this._container = cardTemplate;
+        
     }
 
     addItem(element) {

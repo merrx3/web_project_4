@@ -1,4 +1,3 @@
-import { cardTemplate } from '../utils/constants.js';
 
 class Card {
     constructor({
@@ -7,7 +6,7 @@ class Card {
         openDeleteModal, 
         handleCardLike, 
         userId,
-    }, cardTemplate) {
+    }) {
         this._name = data.name;
         this._image = data.image;
         this._alt = data.alt;
@@ -15,8 +14,8 @@ class Card {
         this._authUserId = data.owner_id;
         this._userId = userId;
 
-        //const cardSelector = document.querySelector("#card-template");
-        this._cardSelector = cardTemplate;
+
+        this._cardSelector = "#card-template";
         this._handleCardClick = handleCardClick;
         this._openDeleteModal = openDeleteModal;
         this._handleCardLike = handleCardLike;
@@ -36,6 +35,7 @@ class Card {
 
     _handleActiveLikeBtn() {
         this._likeCount.textcontent = this._likes.length;
+        console.log(this._likeButton)
 
         if (this._likes.filter((user) => user._id === this._userId).length > 0) {
             this._likeButton.classList.add("photo-grid__like-btn_active");
@@ -61,6 +61,7 @@ class Card {
     }
 
     _setEventListeners() {
+        console.log(this._likeButton)
         this._likeButton.addEventListener("click", () => this._handleCardLike);
         this._element.querySelector(".photo-grid__photo").addEventListener("click", () => this._openDeleteModal());
       
@@ -71,6 +72,7 @@ class Card {
         this._likeCount = this._element.querySelector(".photo-grid__like-num");
         this._likeButton = this._element.querySelector(".photo-grid__like-btn");
         this._deleteButton = this._element.querySelector(".photo-grid__trash-btn");
+        console.log(this._element)
        
 
         this._setEventListeners();
