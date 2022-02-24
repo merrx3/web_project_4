@@ -8,7 +8,6 @@ import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import Card from '../components/Card.js';
 import {
-  initialCards,
   editModalWindowSelector,
   deleteCardWindow,
   placesList,
@@ -27,6 +26,7 @@ import {
 } from '../utils/constants.js';
 import Api from "../components/Api.js";
 
+
 //API
 const api = new Api ({
     baseUrl: "https://around.nomoreparties.co/v1/group-12",
@@ -37,6 +37,7 @@ const api = new Api ({
     },
   });
 
+let defaultCardList = null;
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
 .then( ([initialCards, userInfo]) => {
@@ -52,15 +53,22 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
       _id: _id,
       avatar: avatar
   })
-  defaultCardList.renderedItems = initialCards;
+  defaultCardList = new Section(
+    {
+      items: initialCards,
+      renderer: (item) => {
+        renderCard(item);
+      },
+    },
+    placesList,
+  );
   defaultCardList.renderItems();
 })
 .catch(err => `Unable to load data: ${err}`)
 
-// Create new instances
-
 const addFormValidator = new FormValidator(formValidationConfig, addFormEl);
 const editFormValidator = new FormValidator(formValidationConfig, editFormEl);
+
 function renderCard(item) {
     const card = new Card ({
         data: item,
@@ -82,15 +90,6 @@ function renderCard(item) {
       defaultCardList.addItem(cardElement);
 };
 
-const defaultCardList = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      renderCard(item);
-    },
-  },
-  cardTemplate,
-);
 
 const imagePopup = new PopupWithImage('#js-preview-modal');
 
@@ -135,7 +134,6 @@ const deleteImagePopup = new PopupDelete(
 ); */
 
 // Setup classes
-defaultCardList.renderItems();
 editPopup.setEventListeners();
 addCardPopup.setEventListeners();
 addFormValidator.enableValidation();
@@ -153,7 +151,6 @@ modalEditBtn.addEventListener('click', () => {
 addModalButton.addEventListener('click', () => {
   addCardPopup.open();
 });
-
 
   /*const card = new Card(item, '#card-template', (name, image) => {
         imagePopup.open({ name, image });

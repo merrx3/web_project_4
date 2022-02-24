@@ -1,10 +1,8 @@
-import { cardTemplate } from "../utils/constants";
-
 class Section {
-    constructor ({ items, renderer }, cardTemplate) {
+    constructor ({ items, renderer }, placesList) {
         this.renderedItems = items;
         this._renderer = renderer;
-        this._container = cardTemplate;
+        this._container = placesList;
         
     }
 

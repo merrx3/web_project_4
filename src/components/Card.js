@@ -1,4 +1,3 @@
-
 class Card {
     constructor({
         data, 
@@ -22,7 +21,7 @@ class Card {
     }
 
     _getTemplate() {
-        const cardElement = document.querySelector(this._cardSelector)
+        const cardElement = document.querySelector(this._cardSelector).content
         .cloneNode(true);
 
         return cardElement;
@@ -35,7 +34,6 @@ class Card {
 
     _handleActiveLikeBtn() {
         this._likeCount.textcontent = this._likes.length;
-        console.log(this._likeButton)
 
         if (this._likes.filter((user) => user._id === this._userId).length > 0) {
             this._likeButton.classList.add("photo-grid__like-btn_active");
@@ -61,7 +59,6 @@ class Card {
     }
 
     _setEventListeners() {
-        console.log(this._likeButton)
         this._likeButton.addEventListener("click", () => this._handleCardLike);
         this._element.querySelector(".photo-grid__photo").addEventListener("click", () => this._openDeleteModal());
       
@@ -72,7 +69,7 @@ class Card {
         this._likeCount = this._element.querySelector(".photo-grid__like-num");
         this._likeButton = this._element.querySelector(".photo-grid__like-btn");
         this._deleteButton = this._element.querySelector(".photo-grid__trash-btn");
-        console.log(this._element)
+
        
 
         this._setEventListeners();
