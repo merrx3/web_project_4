@@ -23,6 +23,7 @@ import {
   profileBio,
   addModalWindowSelector,
   cardTemplate,
+  initialCards,
 } from '../utils/constants.js';
 import Api from "../components/Api.js";
 
@@ -37,34 +38,41 @@ const api = new Api ({
     },
   });
 
-let defaultCardList = null;
-
-Promise.all([api.getInitialCards(), api.getUserInfo()])
-.then( ([initialCards, userInfo]) => {
-  const {
-      name,
-      bio,
-      avatar,
-      _id
-  } = userInfo;
-  userData.setUserInfo({
-      name: name,
-      job: bio,
-      _id: _id,
-      avatar: avatar
-  })
-  defaultCardList = new Section(
+//let defaultCardList = null;
+const defaultCardList = new Section(
     {
-      items: initialCards,
-      renderer: (item) => {
+    items: initialCards,
+    renderer: (item) => {
         renderCard(item);
-      },
+    },
     },
     placesList,
-  );
-  defaultCardList.renderItems();
-})
-.catch(err => `Unable to load data: ${err}`)
+);
+defaultCardList.renderItems();
+
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+    .then( ([initialCards, userInfo]) => {
+    const {
+        name,
+        bio,
+        avatar,
+        _id
+    } = userInfo;
+    userData.setUserInfo({
+        name: name,
+        job: bio,
+        _id: _id,
+        avatar: avatar
+    });
+    defaultCardList.renderItems(initialCards);
+    })
+    .catch(err => `Unable to load data: ${err}`)
+
+
+
+
+
+
 
 const addFormValidator = new FormValidator(formValidationConfig, addFormEl);
 const editFormValidator = new FormValidator(formValidationConfig, editFormEl);
@@ -90,7 +98,8 @@ function renderCard(item) {
       defaultCardList.addItem(cardElement);
 };
 
-
+api
+    .get
 const imagePopup = new PopupWithImage('#js-preview-modal');
 
 const userData = new UserInfo({
